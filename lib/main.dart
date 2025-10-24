@@ -1,6 +1,9 @@
+
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:movies/common/app_colors.dart';
+
+import 'common/movies/movies/home_screen.dart';
+import 'common/movies/movies/screens/onboarding_screen.dart';
+import 'common/movies/movies/screens/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,11 +16,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Movies App',
-      home: Scaffold(
-        body:Container(color: AppColors.whiteColor,),
-      ),
+      title: 'Route App',
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const SplashScreen(),
+        '/onboarding': (context) => const OnBoardingScreen(),
+        '/home': (context) => const HomeScreen(),
+      },
     );
   }
 }
-
