@@ -1,0 +1,22 @@
+# Flutter and Dart
+.dart_tool/
+.buildlog/
+.packages
+pubspec.lock
+
+# Build outputs
+build/
+
+# iOS and Android
+ios/Flutter/.last_build_id
+ios/Pods/
+ios/Runner.xcworkspace/
+android/.gradle/
+android/app/build/
+
+# VSCode
+.vscode/
+
+# Others
+*.log
+*.tmp
