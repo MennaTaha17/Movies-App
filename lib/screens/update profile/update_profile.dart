@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:movies/common/Theme/app_colors.dart';
 import '../../common/Widget/custom_main_button.dart';
 import '../../common/Widget/custom_text_filed.dart';
+
 class UpdateProfile extends StatefulWidget {
   UpdateProfile({super.key});
   static const String routName = '/updateProfile';
   @override
   State<UpdateProfile> createState() => _UpdateProfileState();
 }
+
 class _UpdateProfileState extends State<UpdateProfile> {
   final List<String> avatarImages = [
     'asstes/profileImages/image 1.png',
@@ -73,9 +75,11 @@ class _UpdateProfileState extends State<UpdateProfile> {
       },
     );
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false, // The screen will not move
       appBar: AppBar(
         title: Text(
           "Pick Avatar",
@@ -106,7 +110,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
             ),
             SizedBox(height: 30),
             CustomTextFiled(
-              text: "John Safwat", //TODO : logic
+              text: "Mark Gamal", //TODO : logic
               icon: Icon(Icons.person, size: 30, color: AppColors.whiteColor),
             ),
             SizedBox(height: 20),
@@ -126,7 +130,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
                 ),
               ),
             ),
-            Spacer(), //chnge
+            Spacer(),
             CustomMainButton(
               text: "Delete Account",
               color: AppColors.redColor,
