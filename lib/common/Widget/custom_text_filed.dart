@@ -2,30 +2,45 @@ import 'package:flutter/material.dart';
 import 'package:movies/common/Theme/app_colors.dart';
 
 class CustomTextFiled extends StatelessWidget {
-  const CustomTextFiled({super.key, required this.icon, required this.text});
-  final Widget icon;
-  final String text;
+  const CustomTextFiled({
+    super.key,
+    this.icon,
+    this.text,
+    this.isPassword = false,
+  });
+
+  final dynamic icon;
+  final String? text;
+  final bool isPassword;
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      // readOnly: true,
-      style: TextStyle(
-        color: AppColors.whiteColor,
-        fontSize: 20,
-        fontWeight: FontWeight.w400,
-      ),
-      decoration: InputDecoration(
-        filled: true,
-        fillColor: AppColors.grayColor,
-        border: _getborder(),
-        focusedBorder: _getborder(),
-        enabledBorder: _getborder(),
-        errorBorder: _getborder(errorColor: Colors.red),
-        prefixIcon: icon,
-        hint: Text(
-          text,
-          style: TextStyle(
+    return SizedBox(
+      height: 56,
+      child: TextFormField(
+        obscureText: isPassword,
+        style: TextStyle(
+          color: AppColors.whiteColor,
+          fontSize: 20,
+          fontWeight: FontWeight.w400,
+        ),
+        decoration: InputDecoration(
+          filled: true,
+          fillColor: AppColors.grayColor,
+          border: _getborder(),
+          focusedBorder: _getborder(),
+          enabledBorder: _getborder(),
+          errorBorder: _getborder(errorColor: Colors.red),
+          prefixIcon: _buildPrefixIcon(),
+          suffixIcon: text == 'Password'
+              ? Icon(
+            Icons.visibility_off,
+            color: AppColors.whiteColor,
+            size: 28,
+          )
+              : null,
+          hintText: text,
+          hintStyle: TextStyle(
             color: AppColors.whiteColor.withValues(),
             fontSize: 20,
             fontWeight: FontWeight.w400,
@@ -34,11 +49,26 @@ class CustomTextFiled extends StatelessWidget {
       ),
     );
   }
+
+
+  Widget? _buildPrefixIcon() {
+    if (icon == null) return null;
+
+    if (icon is Icon) {
+      return icon as Icon;
+    } else if (icon is IconData) {
+      return Icon(icon,
+          color: AppColors.whiteColor,size: 28);
+    } else {
+      return null;
+    }
+  }
 }
+
 
 _getborder({Color? errorColor}) {
   return OutlineInputBorder(
-    borderRadius: BorderRadius.circular(16),
+    borderRadius: BorderRadius.circular(15),
     borderSide: BorderSide(color: errorColor ?? AppColors.grayColor),
   );
 }

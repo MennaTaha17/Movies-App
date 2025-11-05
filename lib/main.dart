@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movies/common/Theme/theme.dart';
+import 'package:movies/screens/auth/login_screen.dart';
 import 'package:movies/screens/update%20profile/update_profile.dart';
 
 void main() {
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: AppTheme.appTheme,
       title: 'Movies App',
       // home: Scaffold(body: Container(color: AppColors.whiteColor)),
-      home: UpdateProfile(),
+      home: LoginScreen(),
     );
   }
 }
