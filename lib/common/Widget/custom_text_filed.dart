@@ -35,7 +35,7 @@ class CustomTextFiled extends StatelessWidget {
           enabledBorder: _getborder(),
           errorBorder: _getborder(errorColor: Colors.red),
           prefixIcon: _buildPrefixIcon(),
-          suffixIcon: text == 'Password'
+          suffixIcon:( text == 'Password'|| text=='Confirm Password')
               ? Icon(
             Icons.visibility_off,
             color: AppColors.whiteColor,

@@ -69,23 +69,16 @@ class LoginScreen extends StatelessWidget {
                       child: Text("Forget Password ?"),
                     ),
                   ),
-                  const SizedBox(height: 22),
-                  SizedBox(
-                    height: 56,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: AppColors.yellowColor,
-                        foregroundColor: AppColors.blackColor,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(12)),
-                        ),
-                      ),
-                      onPressed: () {
-
-                      },
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [Text('Login', style: TextStyle(fontSize: 20))],
+                ),
+                const SizedBox(height: 22),
+                SizedBox(
+                  height: 56,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColors.yellowColor,
+                      foregroundColor: AppColors.blackColor,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(15)),
                       ),
                     ),
                   ),
@@ -111,19 +104,23 @@ class LoginScreen extends StatelessWidget {
                         ),
                         child: Text("Create account"),
                       ),
-
-                    ],
-                  ),
-
-                  const SizedBox(height: 20),
-
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        width: 60,
-                        height: 1,
-                        color: AppColors.yellowColor,
+                    ),
+                    Container(
+                      width: 60,
+                      height: 1,
+                      color: AppColors.yellowColor,
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 28),
+                SizedBox(
+                  height: 56,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColors.yellowColor,
+                      foregroundColor: AppColors.blackColor,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(15)),
                       ),
                       const Padding(
                         padding: EdgeInsets.symmetric(horizontal: 10),
