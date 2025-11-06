@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-
 import 'common/Theme/app_colors.dart';
 
 class OtpVerification extends StatelessWidget {
@@ -9,7 +7,6 @@ class OtpVerification extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController emailController = TextEditingController();
     return SafeArea(
       child: Scaffold(
         backgroundColor: AppColors.blackColor,
