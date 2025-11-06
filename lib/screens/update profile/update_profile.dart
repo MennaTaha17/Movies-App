@@ -53,7 +53,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
                   decoration: BoxDecoration(
                     color:
                         isSelected ? AppColors.yellowColor : Colors.transparent,
-                    borderRadius: BorderRadiusGeometry.circular(12),
+                    borderRadius: BorderRadius.circular(12),
                     border: Border.all(
                       color: AppColors.yellowColor,
                       width: 1.5,

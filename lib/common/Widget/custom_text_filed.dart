@@ -7,17 +7,20 @@ class CustomTextFiled extends StatelessWidget {
     this.icon,
     this.text,
     this.isPassword = false,
+    this.validator
   });
 
   final dynamic icon;
   final String? text;
   final bool isPassword;
+  final String? Function(String?)? validator;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 56,
       child: TextFormField(
+        validator: validator,
         obscureText: isPassword,
         style: TextStyle(
           color: AppColors.whiteColor,
