@@ -54,7 +54,7 @@ class LoginScreen extends StatelessWidget {
                       backgroundColor: AppColors.yellowColor,
                       foregroundColor: AppColors.blackColor,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(12)),
+                        borderRadius: BorderRadius.all(Radius.circular(15)),
                       ),
                     ),
                     onPressed: () {},
@@ -125,7 +125,7 @@ class LoginScreen extends StatelessWidget {
                       backgroundColor: AppColors.yellowColor,
                       foregroundColor: AppColors.blackColor,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(12)),
+                        borderRadius: BorderRadius.all(Radius.circular(15)),
                       ),
                     ),
                     onPressed: () {},

@@ -21,7 +21,11 @@ class CustomMainButton extends StatelessWidget {
           child: SizedBox(
             height: 56,
             child: FilledButton(
-              style: FilledButton.styleFrom(backgroundColor: color),
+              style: FilledButton.styleFrom(backgroundColor: color,
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)
+                
+              )),
+              
               onPressed: onPressed,
               child: Text(
                 text,
