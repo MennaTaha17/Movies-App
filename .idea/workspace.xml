@@ -68,8 +68,8 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/MennaTaha17/Movies-App.git&quot;,
-    &quot;accountId&quot;: &quot;f2452799-a000-4c59-9528-547b191001ea&quot;
+    &quot;url&quot;: &quot;https://github.com/MennaTaha17/Movies-App&quot;,
+    &quot;accountId&quot;: &quot;840bb1cf-6272-4cfe-80bd-618d1d03062d&quot;
   }
 }</component>
   <component name="ProblemsViewState">
@@ -99,7 +99,10 @@
     &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;feature/register-ui&quot;,
     &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;flutter.settings&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;AndroidSdkUpdater&quot;,
     &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
   }
 }</component>
@@ -111,12 +114,6 @@
       <recent name="E:\environment flutter\myLearn\Assignments\Movies-App\asstes" />
       <recent name="E:\environment flutter\myLearn\Assignments\Movies-App\lib\screens" />
     </key>
-  </component>
-  <component name="RunManager">
-    <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter">
-      <option name="filePath" value="$PROJECT_DIR$/lib/main.dart" />
-      <method v="2" />
-    </configuration>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

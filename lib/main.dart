@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:movies/otp_verfication.dart';
+import 'package:movies/screens/forget_password_screen.dart';
 import 'package:movies/common/Theme/theme.dart';
 import 'package:movies/screens/auth/login_screen.dart';
 import 'package:movies/screens/auth/sign_up_screen.dart';
@@ -22,3 +24,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
