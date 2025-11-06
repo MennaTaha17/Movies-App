@@ -18,6 +18,9 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_11.toString()
     }
+    dependencies {
+        implementation("org.jetbrains.kotlin:kotlin-stdlib:1.9.23")
+    }
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).

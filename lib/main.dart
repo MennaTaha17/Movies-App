@@ -21,8 +21,9 @@ class MyApp extends StatelessWidget {
       routes: {
         ForgetPasswordScreen.routeName: (_)=> ForgetPasswordScreen(),
         OtpVerification.routeName:(_)=> OtpVerification(),
+        LoginScreen.routeName:(_)=>LoginScreen(),
       },
-      home: LoginScreen(),
+      initialRoute: LoginScreen.routeName,
     );
   }
 }
