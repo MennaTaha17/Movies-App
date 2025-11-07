@@ -1,95 +1,117 @@
 import 'package:flutter/material.dart';
 import 'package:movies/common/Theme/app_colors.dart';
 import 'package:movies/common/Widget/custom_text_filed.dart';
-import 'package:movies/screens/forget_password_screen.dart';
+import 'package:movies/screens/auth/sign_up_screen.dart';
+import 'package:movies/screens/auth/forget_password_screen.dart';
 
 class LoginScreen extends StatelessWidget {
-  static const String routeName ='/loginScreen';
+  static const String routeName = '/loginScreen';
   const LoginScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     GlobalKey<FormState> _globalKey = GlobalKey<FormState>();
+
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.all(19),
+            padding: const EdgeInsets.all(19),
             child: Form(
               key: _globalKey,
               child: Column(
-                // crossAxisAlignment:CrossAxisAlignment.stretch,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.asset('asstes/images/png/video_image.png'),
+                  Image.asset('assets/images/png/video_image.png'),
                   const SizedBox(height: 50),
+
+                  // Email field
                   CustomTextFiled(
-                    icon:Icons.email_rounded,
+                    icon: Icons.email_rounded,
                     text: 'Email',
-                    validator:  (value) {
-                      bool validateEmail() =>
-                          RegExp(
-                            r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
-                          ).hasMatch(value ?? '');
-                      if (value == null || value!.isEmpty) {
+                    validator: (value) {
+                      bool validateEmail() => RegExp(
+                        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
+                      ).hasMatch(value ?? '');
+                      if (value == null || value.isEmpty) {
                         return 'Email is required';
                       } else if (!validateEmail()) {
-                        return 'invalid email';
+                        return 'Invalid email';
                       }
+                      return null;
                     },
                   ),
+
                   const SizedBox(height: 22),
 
+                  // Password field
                   CustomTextFiled(
-                      icon:Icons.lock,
-                      text: 'Password',
-                      isPassword: true,
+                    icon: Icons.lock,
+                    text: 'Password',
+                    isPassword: true,
                     validator: (value) {
-                      if(value == null || value!.isEmpty){
+                      if (value == null || value.isEmpty) {
                         return 'Password is required';
-                      }else if(value.length < 5){
-                        return 'invalid Password';
+                      } else if (value.length < 5) {
+                        return 'password must ba at least 5 characters';
                       }
+                      return null;
                     },
                   ),
 
                   const SizedBox(height: 17.18),
+
+                  // Forget Password
                   Align(
                     alignment: Alignment.centerRight,
-                    child:  TextButton(
+                    child: TextButton(
                       onPressed: () {
-                          Navigator.pushReplacementNamed(context, ForgetPasswordScreen.routeName);
+                        Navigator.pushReplacementNamed(
+                            context, ForgetPasswordScreen.routeName);
                       },
                       style: TextButton.styleFrom(
                         foregroundColor: AppColors.yellowColor,
-                        textStyle: TextStyle(
+                        textStyle: const TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
-                      child: Text("Forget Password ?"),
+                      child: const Text("Forget Password ?"),
                     ),
                   ),
-                ),
-                const SizedBox(height: 22),
-                SizedBox(
-                  height: 56,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: AppColors.yellowColor,
-                      foregroundColor: AppColors.blackColor,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(15)),
+
+                  const SizedBox(height: 22),
+
+                  // Login button
+                  SizedBox(
+                    height: 56,
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: AppColors.yellowColor,
+                        foregroundColor: AppColors.blackColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(15)),
+                        ),
+                      ),
+                      child: const Text(
+                        "Login",
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),
 
                   const SizedBox(height: 20),
 
+                  // Create account text
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const Text(
-                        "Don't Have Account ? ",
+                        "Don't Have Account? ",
                         style: TextStyle(color: Colors.white70, fontSize: 16),
                       ),
                       TextButton(
@@ -97,49 +119,53 @@ class LoginScreen extends StatelessWidget {
                         },
                         style: TextButton.styleFrom(
                           foregroundColor: AppColors.yellowColor,
-                          textStyle: TextStyle(
+                          textStyle: const TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        child: Text("Create account"),
+                        child: const Text("Create account"),
                       ),
-                    ),
-                    Container(
-                      width: 60,
-                      height: 1,
-                      color: AppColors.yellowColor,
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 28),
-                SizedBox(
-                  height: 56,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: AppColors.yellowColor,
-                      foregroundColor: AppColors.blackColor,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(15)),
+                    ],
+                  ),
+
+                  // Divider line
+                  Container(
+                    width: 60,
+                    height: 1,
+                    color: AppColors.yellowColor,
+                  ),
+
+                  const SizedBox(height: 28),
+
+                  // OR button
+                  SizedBox(
+                    height: 56,
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: AppColors.yellowColor,
+                        foregroundColor: AppColors.blackColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(15)),
+                        ),
                       ),
-                      const Padding(
+                      child: const Padding(
                         padding: EdgeInsets.symmetric(horizontal: 10),
                         child: Text(
                           "OR",
                           style: TextStyle(
-                            color: AppColors.yellowColor,
+                            color: AppColors.blackColor,
                             fontSize: 16,
                           ),
                         ),
                       ),
-                      Container(
-                        width: 60,
-                        height: 1,
-                        color: AppColors.yellowColor,
-                      ),
-                    ],
+                    ),
                   ),
+
                   const SizedBox(height: 28),
+
+                  // Login with Google
                   SizedBox(
                     height: 56,
                     child: ElevatedButton(
@@ -155,12 +181,12 @@ class LoginScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Image.asset(
-                            'asstes/images/png/google_icon.png',
+                            'assets/images/png/google_icon.png',
                             width: 26,
                             height: 26,
                           ),
                           const SizedBox(width: 10),
-                          Text(
+                          const Text(
                             'Login With Google',
                             style: TextStyle(fontSize: 20),
                           ),
@@ -169,48 +195,45 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
 
-//TO DO LOCALIZATION
+                  const SizedBox(height: 25),
 
-              const SizedBox(height: 25),Container(
+                  // Flags container
+                  Container(
                     padding: const EdgeInsets.all(4),
                     decoration: BoxDecoration(
                       color: Colors.transparent,
                       border: Border.all(
-                        color:AppColors.yellowColor,
+                        color: AppColors.yellowColor,
                         width: 2,
                       ),
                       borderRadius: BorderRadius.circular(30),
                     ),
-                    child:
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          'assets/images/png/usatate_flag.png',
+                          width: 26,
+                          height: 26,
+                        ),
+                        const SizedBox(width: 15),
+                        Image.asset(
+                          'assets/images/png/egypt_flag.png',
+                          width: 26,
+                          height: 26,
+                        ),
+                      ],
+                    ),
+                  ),
 
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset(
-                    'asstes/images/png/usatate_flag.png',
-                    width: 26,
-                    height: 26,
-                  ),
-                  SizedBox(width: 15),
-                  Image.asset(
-                    'asstes/images/png/egypt_flag.png',
-                    width: 26,
-                    height: 26,
-                  ),
+                  const SizedBox(height: 25),
                 ],
               ),
+            ),
           ),
-
-
-              const SizedBox(height: 25),
-
-
-                ]),
-            )
-        )
-      )
-    )
+        ),
+      ),
     );
   }
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'common/Theme/app_colors.dart';
+import '../../common/Theme/app_colors.dart';
 
 class OtpVerification extends StatelessWidget {
   static const String routeName = '/otpVerification';

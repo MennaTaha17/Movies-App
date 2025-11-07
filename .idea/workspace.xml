@@ -4,6 +4,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< Updated upstream
     <list default="true" id="6355bdc4-544b-45ab-8126-c6d5c93ab544" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/common/Widget/custom_main_button.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/Widget/custom_main_button.dart" afterDir="false" />
@@ -11,6 +12,31 @@
       <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/screens/auth/login_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/auth/login_screen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/screens/auth/sign_up_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/auth/sign_up_screen.dart" afterDir="false" />
+=======
+    <list default="true" id="6355bdc4-544b-45ab-8126-c6d5c93ab544" name="Changes" comment="finished editing login and forget password ui">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/.cxx/Debug/1p1r2832/arm64-v8a/android_gradle_build.json" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/.cxx/Debug/1p1r2832/arm64-v8a/android_gradle_build.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/.cxx/Debug/1p1r2832/arm64-v8a/android_gradle_build_mini.json" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/.cxx/Debug/1p1r2832/arm64-v8a/android_gradle_build_mini.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/.cxx/Debug/1p1r2832/arm64-v8a/configure_fingerprint.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/.cxx/Debug/1p1r2832/arm64-v8a/configure_fingerprint.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/.cxx/Debug/1p1r2832/arm64-v8a/metadata_generation_command.txt" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/.cxx/Debug/1p1r2832/arm64-v8a/metadata_generation_command.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/.cxx/Debug/1p1r2832/armeabi-v7a/android_gradle_build.json" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/.cxx/Debug/1p1r2832/armeabi-v7a/android_gradle_build.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/.cxx/Debug/1p1r2832/armeabi-v7a/android_gradle_build_mini.json" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/.cxx/Debug/1p1r2832/armeabi-v7a/android_gradle_build_mini.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/.cxx/Debug/1p1r2832/armeabi-v7a/configure_fingerprint.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/.cxx/Debug/1p1r2832/armeabi-v7a/configure_fingerprint.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/.cxx/Debug/1p1r2832/armeabi-v7a/metadata_generation_command.txt" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/.cxx/Debug/1p1r2832/armeabi-v7a/metadata_generation_command.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/.cxx/Debug/1p1r2832/x86/android_gradle_build.json" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/.cxx/Debug/1p1r2832/x86/android_gradle_build.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/.cxx/Debug/1p1r2832/x86/android_gradle_build_mini.json" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/.cxx/Debug/1p1r2832/x86/android_gradle_build_mini.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/.cxx/Debug/1p1r2832/x86/configure_fingerprint.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/.cxx/Debug/1p1r2832/x86/configure_fingerprint.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/.cxx/Debug/1p1r2832/x86/metadata_generation_command.txt" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/.cxx/Debug/1p1r2832/x86/metadata_generation_command.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/.cxx/Debug/1p1r2832/x86_64/android_gradle_build.json" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/.cxx/Debug/1p1r2832/x86_64/android_gradle_build.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/.cxx/Debug/1p1r2832/x86_64/android_gradle_build_mini.json" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/.cxx/Debug/1p1r2832/x86_64/android_gradle_build_mini.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/.cxx/Debug/1p1r2832/x86_64/configure_fingerprint.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/.cxx/Debug/1p1r2832/x86_64/configure_fingerprint.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/.cxx/Debug/1p1r2832/x86_64/metadata_generation_command.txt" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/.cxx/Debug/1p1r2832/x86_64/metadata_generation_command.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.h" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/linux/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/generated_plugins.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" beforeDir="false" afterPath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" afterDir="false" />
+>>>>>>> Stashed changes
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +123,11 @@
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;com.android.tools.idea.streaming.zoom.toolbar.visible&quot;: &quot;false&quot;,
     &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+<<<<<<< Updated upstream
     &quot;git-widget-placeholder&quot;: &quot;feature/register-ui&quot;,
+=======
+    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
+>>>>>>> Stashed changes
     &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
     &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
@@ -114,6 +144,12 @@
       <recent name="E:\environment flutter\myLearn\Assignments\Movies-App\asstes" />
       <recent name="E:\environment flutter\myLearn\Assignments\Movies-App\lib\screens" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter">
+      <option name="filePath" value="$PROJECT_DIR$/lib/main.dart" />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

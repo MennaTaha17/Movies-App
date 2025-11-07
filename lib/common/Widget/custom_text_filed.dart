@@ -1,48 +1,60 @@
 import 'package:flutter/material.dart';
 import 'package:movies/common/Theme/app_colors.dart';
 
-class CustomTextFiled extends StatelessWidget {
+class CustomTextFiled extends StatefulWidget {
   const CustomTextFiled({
     super.key,
     this.icon,
     this.text,
     this.isPassword = false,
-    this.validator
+    this.validator,
+    this.controller,
+    this.fontSize,
   });
 
   final dynamic icon;
   final String? text;
   final bool isPassword;
   final String? Function(String?)? validator;
+  final double? fontSize;
+ final TextEditingController? controller;
 
+  @override
+  State<CustomTextFiled> createState() => _CustomTextFiledState();
+}
+
+class _CustomTextFiledState extends State<CustomTextFiled> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 56,
       child: TextFormField(
-        validator: validator,
-        obscureText: isPassword,
+        cursorColor: AppColors.whiteColor,
+        validator: widget.validator,
+        obscureText: widget.isPassword,
+        controller: widget.controller,
         style: TextStyle(
           color: AppColors.whiteColor,
-          fontSize: 20,
+          fontSize: widget.fontSize,
           fontWeight: FontWeight.w400,
         ),
         decoration: InputDecoration(
           filled: true,
           fillColor: AppColors.grayColor,
-          border: _getborder(),
+         border: _getborder(),
           focusedBorder: _getborder(),
           enabledBorder: _getborder(),
           errorBorder: _getborder(errorColor: Colors.red),
+          focusedErrorBorder: _getborder(errorColor: Colors.red),
           prefixIcon: _buildPrefixIcon(),
-          suffixIcon:( text == 'Password'|| text=='Confirm Password')
+          suffixIcon:( widget.text == 'Password'|| widget.text=='Confirm Password')
               ? Icon(
             Icons.visibility_off,
             color: AppColors.whiteColor,
             size: 28,
           )
               : null,
-          hintText: text,
+          hintText: widget.text,
           hintStyle: TextStyle(
             color: AppColors.whiteColor.withValues(),
             fontSize: 20,
@@ -53,14 +65,13 @@ class CustomTextFiled extends StatelessWidget {
     );
   }
 
-
   Widget? _buildPrefixIcon() {
-    if (icon == null) return null;
+    if (widget.icon == null) return null;
 
-    if (icon is Icon) {
-      return icon as Icon;
-    } else if (icon is IconData) {
-      return Icon(icon,
+    if (widget.icon is Icon) {
+      return widget.icon as Icon;
+    } else if (widget.icon is IconData) {
+      return Icon(widget.icon,
           color: AppColors.whiteColor,size: 28);
     } else {
       return null;
