@@ -5,7 +5,13 @@ import 'package:movies/common/Theme/theme.dart';
 import 'package:movies/screens/auth/login_screen.dart';
 import 'package:movies/screens/auth/sign_up_screen.dart';
 import 'package:movies/screens/update%20profile/update_profile.dart';
-void main() {
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 

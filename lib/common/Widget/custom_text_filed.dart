@@ -17,13 +17,14 @@ class CustomTextFiled extends StatefulWidget {
   final bool isPassword;
   final String? Function(String?)? validator;
   final double? fontSize;
- final TextEditingController? controller;
+  final TextEditingController? controller;
 
   @override
   State<CustomTextFiled> createState() => _CustomTextFiledState();
 }
 
 class _CustomTextFiledState extends State<CustomTextFiled> {
+  late  bool isPassword = widget.isPassword;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -31,7 +32,7 @@ class _CustomTextFiledState extends State<CustomTextFiled> {
       child: TextFormField(
         cursorColor: AppColors.whiteColor,
         validator: widget.validator,
-        obscureText: widget.isPassword,
+        obscureText: isPassword,
         controller: widget.controller,
         style: TextStyle(
           color: AppColors.whiteColor,
@@ -41,25 +42,35 @@ class _CustomTextFiledState extends State<CustomTextFiled> {
         decoration: InputDecoration(
           filled: true,
           fillColor: AppColors.grayColor,
-         border: _getborder(),
+          border: _getborder(),
           focusedBorder: _getborder(),
           enabledBorder: _getborder(),
           errorBorder: _getborder(errorColor: Colors.red),
           focusedErrorBorder: _getborder(errorColor: Colors.red),
           prefixIcon: _buildPrefixIcon(),
-          suffixIcon:( widget.text == 'Password'|| widget.text=='Confirm Password')
-              ? Icon(
-            Icons.visibility_off,
-            color: AppColors.whiteColor,
-            size: 28,
+          suffixIcon:
+          widget.isPassword
+              ? IconButton(
+            onPressed: () {
+              setState(() {
+                isPassword = !isPassword;
+              });
+            },
+            icon: Icon(
+              isPassword
+                  ? Icons.visibility_off
+                  : Icons.remove_red_eye_rounded,
+              color: AppColors.whiteColor,
+            ),
           )
-              : null,
+                  : null,
           hintText: widget.text,
           hintStyle: TextStyle(
             color: AppColors.whiteColor.withValues(),
             fontSize: 20,
             fontWeight: FontWeight.w400,
           ),
+          errorStyle: const TextStyle(height: 0),
         ),
       ),
     );
@@ -71,14 +82,12 @@ class _CustomTextFiledState extends State<CustomTextFiled> {
     if (widget.icon is Icon) {
       return widget.icon as Icon;
     } else if (widget.icon is IconData) {
-      return Icon(widget.icon,
-          color: AppColors.whiteColor,size: 28);
+      return Icon(widget.icon, color: AppColors.whiteColor, size: 28);
     } else {
       return null;
     }
   }
 }
-
 
 _getborder({Color? errorColor}) {
   return OutlineInputBorder(
