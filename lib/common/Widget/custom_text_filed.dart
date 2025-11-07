@@ -1,30 +1,42 @@
 import 'package:flutter/material.dart';
 import 'package:movies/common/Theme/app_colors.dart';
 
-class CustomTextFiled extends StatelessWidget {
+class CustomTextFiled extends StatefulWidget {
   const CustomTextFiled({
     super.key,
     this.icon,
     this.text,
     this.isPassword = false,
-    this.validator
+    this.validator,
+    this.controller,
+    this.fontSize,
   });
 
   final dynamic icon;
   final String? text;
   final bool isPassword;
   final String? Function(String?)? validator;
+  final double? fontSize;
+  final TextEditingController? controller;
 
+  @override
+  State<CustomTextFiled> createState() => _CustomTextFiledState();
+}
+
+class _CustomTextFiledState extends State<CustomTextFiled> {
+  late  bool isPassword = widget.isPassword;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 56,
       child: TextFormField(
-        validator: validator,
+        cursorColor: AppColors.whiteColor,
+        validator: widget.validator,
         obscureText: isPassword,
+        controller: widget.controller,
         style: TextStyle(
           color: AppColors.whiteColor,
-          fontSize: 20,
+          fontSize: widget.fontSize,
           fontWeight: FontWeight.w400,
         ),
         decoration: InputDecoration(
@@ -34,40 +46,48 @@ class CustomTextFiled extends StatelessWidget {
           focusedBorder: _getborder(),
           enabledBorder: _getborder(),
           errorBorder: _getborder(errorColor: Colors.red),
+          focusedErrorBorder: _getborder(errorColor: Colors.red),
           prefixIcon: _buildPrefixIcon(),
-          suffixIcon:( text == 'Password'|| text=='Confirm Password')
-              ? Icon(
-            Icons.visibility_off,
-            color: AppColors.whiteColor,
-            size: 28,
+          suffixIcon:
+          widget.isPassword
+              ? IconButton(
+            onPressed: () {
+              setState(() {
+                isPassword = !isPassword;
+              });
+            },
+            icon: Icon(
+              isPassword
+                  ? Icons.visibility_off
+                  : Icons.remove_red_eye_rounded,
+              color: AppColors.whiteColor,
+            ),
           )
-              : null,
-          hintText: text,
+                  : null,
+          hintText: widget.text,
           hintStyle: TextStyle(
             color: AppColors.whiteColor.withValues(),
             fontSize: 20,
             fontWeight: FontWeight.w400,
           ),
+          errorStyle: const TextStyle(height: 0),
         ),
       ),
     );
   }
 
-
   Widget? _buildPrefixIcon() {
-    if (icon == null) return null;
+    if (widget.icon == null) return null;
 
-    if (icon is Icon) {
-      return icon as Icon;
-    } else if (icon is IconData) {
-      return Icon(icon,
-          color: AppColors.whiteColor,size: 28);
+    if (widget.icon is Icon) {
+      return widget.icon as Icon;
+    } else if (widget.icon is IconData) {
+      return Icon(widget.icon, color: AppColors.whiteColor, size: 28);
     } else {
       return null;
     }
   }
 }
-
 
 _getborder({Color? errorColor}) {
   return OutlineInputBorder(

@@ -111,11 +111,13 @@ class _UpdateProfileState extends State<UpdateProfile> {
             SizedBox(height: 30),
             CustomTextFiled(
               text: "Mark Gamal", //TODO : logic
+              fontSize: 20,
               icon: Icon(Icons.person, size: 30, color: AppColors.whiteColor),
             ),
             SizedBox(height: 20),
             CustomTextFiled(
               text: "01200000000", //TODO : logic
+              fontSize: 20,
               icon: Icon(Icons.call, size: 30, color: AppColors.whiteColor),
             ),
             SizedBox(height: 30),
