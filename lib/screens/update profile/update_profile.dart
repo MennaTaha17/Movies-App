@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:movies/common/Theme/app_colors.dart';
+import 'package:movies/network/auth_services.dart';
 import '../../common/Widget/custom_main_button.dart';
 import '../../common/Widget/custom_text_filed.dart';
+import '../../common/Widget/show_delete_dialog.dart';
+import '../auth/forget_password_screen.dart';
 
 class UpdateProfile extends StatefulWidget {
   UpdateProfile({super.key});
-  static const String routName = '/updateProfile';
+  static const String routeName = '/updateProfile';
   @override
   State<UpdateProfile> createState() => _UpdateProfileState();
 }
@@ -122,7 +126,9 @@ class _UpdateProfileState extends State<UpdateProfile> {
             ),
             SizedBox(height: 30),
             TextButton(
-              onPressed: () {}, //TODO : logic
+              onPressed: () {
+                Navigator.of(context).pushNamed(ForgetPasswordScreen.routeName);
+              },
               child: Text(
                 "Reset Password",
                 style: TextStyle(
@@ -137,7 +143,26 @@ class _UpdateProfileState extends State<UpdateProfile> {
               text: "Delete Account",
               color: AppColors.redColor,
               textColor: AppColors.whiteColor,
-              onPressed: () {}, //TODO : logic
+              onPressed: () async {
+                bool? confirm = await showDeleteDialog(context);
+                if (confirm == true) {
+                  try {
+                    await AuthServices.deleteUser();
+                    Fluttertoast.showToast(
+                      msg: "The account has been successfully deleted",
+                      backgroundColor: Colors.green,
+                      toastLength: Toast.LENGTH_LONG,
+                    );
+                    Navigator.of(context).pushReplacementNamed('/loginScreen');
+                  } catch (e) {
+                    Fluttertoast.showToast(
+                      msg: e.toString(),
+                      backgroundColor: Colors.red,
+                      toastLength: Toast.LENGTH_LONG,
+                    );
+                  }
+                }
+              },
             ),
             SizedBox(height: 20),
             CustomMainButton(
