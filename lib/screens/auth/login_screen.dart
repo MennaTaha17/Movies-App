@@ -3,6 +3,7 @@ import 'package:movies/common/Theme/app_colors.dart';
 import 'package:movies/common/Widget/custom_text_filed.dart';
 import 'package:movies/screens/auth/sign_up_screen.dart';
 import 'package:movies/screens/auth/forget_password_screen.dart';
+import 'package:movies/screens/update%20profile/update_profile.dart';
 
 class LoginScreen extends StatelessWidget {
   static const String routeName = '/loginScreen';
@@ -86,7 +87,9 @@ class LoginScreen extends StatelessWidget {
                   SizedBox(
                     height: 56,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).pushNamed(UpdateProfile.routeName);
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.yellowColor,
                         foregroundColor: AppColors.blackColor,
@@ -116,6 +119,8 @@ class LoginScreen extends StatelessWidget {
                       ),
                       TextButton(
                         onPressed: () {
+                          Navigator.of(context).pushNamed(SignUpScreen.routeName);
+
                         },
                         style: TextButton.styleFrom(
                           foregroundColor: AppColors.yellowColor,
