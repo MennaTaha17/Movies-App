@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:movies/screens/auth/otp_verfication.dart';
 import 'package:movies/screens/auth/forget_password_screen.dart';
 import 'package:movies/common/Theme/theme.dart';
 import 'package:movies/screens/auth/login_screen.dart';
@@ -27,7 +26,6 @@ class MyApp extends StatelessWidget {
     routes: {
         LoginScreen.routeName:(_) => LoginScreen(),
       ForgetPasswordScreen.routeName:(_) => ForgetPasswordScreen(),
-      OtpVerification.routeName:(_) => OtpVerification(),
       SignUpScreen.routeName:(_) => SignUpScreen(),
       UpdateProfile.routeName:(_) => UpdateProfile(),
     },
