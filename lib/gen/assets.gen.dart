@@ -138,6 +138,9 @@ class $AsstesImagesPngGen {
   /// File path: asstes/images/png/home_hader.png
   AssetGenImage get homeHader =>
       const AssetGenImage('asstes/images/png/home_hader.png');
+  /// File path: asstes/images/png/im_popcorn.png
+  AssetGenImage get imPopcorn =>
+      const AssetGenImage('asstes/images/png/im_popcorn.png');
 
   /// File path: asstes/images/png/purple_screen.png
   AssetGenImage get purpleScreen =>
@@ -168,6 +171,7 @@ class $AsstesImagesPngGen {
     grayScreen,
     homeCenter,
     homeHader,
+    imPopcorn,
     purpleScreen,
     redScreen,
     usatateFlag,
@@ -178,20 +182,17 @@ class $AsstesImagesPngGen {
 class $AsstesImagesSvgGen {
   const $AsstesImagesSvgGen();
 
-  /// File path: asstes/images/svg/ic_explore.svg
-  SvgGenImage get icExplore =>
-      const SvgGenImage('asstes/images/svg/ic_explore.svg');
+  /// File path: asstes/images/svg/ic_history.svg
+  SvgGenImage get icHistory =>
+      const SvgGenImage('asstes/images/svg/ic_history.svg');
 
-  /// File path: asstes/images/svg/ic_home.svg
-  SvgGenImage get icHome => const SvgGenImage('asstes/images/svg/ic_home.svg');
+  /// File path: asstes/images/svg/ic_watch_list.svg
+  SvgGenImage get icWatchList =>
+      const SvgGenImage('asstes/images/svg/ic_watch_list.svg');
 
-  /// File path: asstes/images/svg/ic_profiel.svg
-  SvgGenImage get icProfiel =>
-      const SvgGenImage('asstes/images/svg/ic_profiel.svg');
-
-  /// File path: asstes/images/svg/ic_search.svg
-  SvgGenImage get icSearch =>
-      const SvgGenImage('asstes/images/svg/ic_search.svg');
+  /// File path: asstes/images/svg/im_forget_password.svg
+  SvgGenImage get imForgetPassword =>
+      const SvgGenImage('asstes/images/svg/im_forget_password.svg');
 
   /// File path: asstes/images/svg/im_forget_password.svg
   SvgGenImage get imForgetPassword =>
@@ -201,9 +202,45 @@ class $AsstesImagesSvgGen {
   SvgGenImage get movieLogo =>
       const SvgGenImage('asstes/images/svg/movie_logo.svg');
 
+  /// File path: asstes/images/svg/popcorn_im.svg
+  SvgGenImage get popcornIm =>
+      const SvgGenImage('asstes/images/svg/popcorn_im.svg');
+
   /// File path: asstes/images/svg/route_logo.svg
   SvgGenImage get routeLogo =>
       const SvgGenImage('asstes/images/svg/route_logo.svg');
+
+  /// File path: asstes/images/svg/sel_ic_explore.svg
+  SvgGenImage get selIcExplore =>
+      const SvgGenImage('asstes/images/svg/sel_ic_explore.svg');
+
+  /// File path: asstes/images/svg/sel_ic_home.svg
+  SvgGenImage get selIcHome =>
+      const SvgGenImage('asstes/images/svg/sel_ic_home.svg');
+
+  /// File path: asstes/images/svg/sel_ic_profile.svg
+  SvgGenImage get selIcProfile =>
+      const SvgGenImage('asstes/images/svg/sel_ic_profile.svg');
+
+  /// File path: asstes/images/svg/sel_ic_search.svg
+  SvgGenImage get selIcSearch =>
+      const SvgGenImage('asstes/images/svg/sel_ic_search.svg');
+
+  /// File path: asstes/images/svg/unsel_ic_explore.svg
+  SvgGenImage get unselIcExplore =>
+      const SvgGenImage('asstes/images/svg/unsel_ic_explore.svg');
+
+  /// File path: asstes/images/svg/unsel_ic_home.svg
+  SvgGenImage get unselIcHome =>
+      const SvgGenImage('asstes/images/svg/unsel_ic_home.svg');
+
+  /// File path: asstes/images/svg/unsel_ic_profiel.svg
+  SvgGenImage get unselIcProfiel =>
+      const SvgGenImage('asstes/images/svg/unsel_ic_profiel.svg');
+
+  /// File path: asstes/images/svg/unsel_ic_search.svg
+  SvgGenImage get unselIcSearch =>
+      const SvgGenImage('asstes/images/svg/unsel_ic_search.svg');
 
   /// List of all assets
   List<SvgGenImage> get values => [
@@ -211,9 +248,20 @@ class $AsstesImagesSvgGen {
     icHome,
     icProfiel,
     icSearch,
+    icHistory,
+    icWatchList,
     imForgetPassword,
     movieLogo,
+    popcornIm,
     routeLogo,
+    selIcExplore,
+    selIcHome,
+    selIcProfile,
+    selIcSearch,
+    unselIcExplore,
+    unselIcHome,
+    unselIcProfiel,
+    unselIcSearch,
   ];
 }
 

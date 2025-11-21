@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movies/screens/auth/otp_verfication.dart';
+import 'package:movies/main_layer.dart';
 import 'package:movies/screens/auth/forget_password_screen.dart';
 import 'package:movies/common/Theme/theme.dart';
 import 'package:movies/screens/auth/login_screen.dart';
@@ -7,13 +7,21 @@ import 'package:movies/screens/auth/sign_up_screen.dart';
 import 'package:movies/screens/update%20profile/update_profile.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'Tabs/Home tab/home_tab.dart';
+import 'package:movies/tabs/profile_tab/profile_tab.dart';
+import 'package:provider/provider.dart';
+import 'package:movies/providers/settings_provider.dart';
 import 'firebase_options.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const MyApp());
+  runApp(
+      MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (context) => SettingsProvider(),)
+        ],
+          child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -28,12 +36,12 @@ class MyApp extends StatelessWidget {
     routes: {
         LoginScreen.routeName:(_) => LoginScreen(),
       ForgetPasswordScreen.routeName:(_) => ForgetPasswordScreen(),
-      OtpVerification.routeName:(_) => OtpVerification(),
       SignUpScreen.routeName:(_) => SignUpScreen(),
       UpdateProfile.routeName:(_) => UpdateProfile(),
-      HomeTab.routeName:(_) => HomeTab(),
+      ProfileTab.routeName:(_) => ProfileTab(),
+      MainLayer.routeName:(_)=> MainLayer(),
     },
-      initialRoute: HomeTab.routeName,
+      initialRoute: MainLayer.routeName,
     );
   }
 }
