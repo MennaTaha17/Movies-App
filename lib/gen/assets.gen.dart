@@ -131,6 +131,13 @@ class $AsstesImagesPngGen {
   AssetGenImage get grayScreen =>
       const AssetGenImage('asstes/images/png/gray_screen.png');
 
+  /// File path: asstes/images/png/home_center.png
+  AssetGenImage get homeCenter =>
+      const AssetGenImage('asstes/images/png/home_center.png');
+
+  /// File path: asstes/images/png/home_hader.png
+  AssetGenImage get homeHader =>
+      const AssetGenImage('asstes/images/png/home_hader.png');
   /// File path: asstes/images/png/im_popcorn.png
   AssetGenImage get imPopcorn =>
       const AssetGenImage('asstes/images/png/im_popcorn.png');
@@ -162,6 +169,8 @@ class $AsstesImagesPngGen {
     egyptFlag,
     googleIcon,
     grayScreen,
+    homeCenter,
+    homeHader,
     imPopcorn,
     purpleScreen,
     redScreen,
@@ -180,6 +189,10 @@ class $AsstesImagesSvgGen {
   /// File path: asstes/images/svg/ic_watch_list.svg
   SvgGenImage get icWatchList =>
       const SvgGenImage('asstes/images/svg/ic_watch_list.svg');
+
+  /// File path: asstes/images/svg/im_forget_password.svg
+  SvgGenImage get imForgetPassword =>
+      const SvgGenImage('asstes/images/svg/im_forget_password.svg');
 
   /// File path: asstes/images/svg/im_forget_password.svg
   SvgGenImage get imForgetPassword =>
@@ -231,6 +244,10 @@ class $AsstesImagesSvgGen {
 
   /// List of all assets
   List<SvgGenImage> get values => [
+    icExplore,
+    icHome,
+    icProfiel,
+    icSearch,
     icHistory,
     icWatchList,
     imForgetPassword,

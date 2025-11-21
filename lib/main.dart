@@ -6,6 +6,7 @@ import 'package:movies/screens/auth/login_screen.dart';
 import 'package:movies/screens/auth/sign_up_screen.dart';
 import 'package:movies/screens/update%20profile/update_profile.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'Tabs/Home tab/home_tab.dart';
 import 'package:movies/tabs/profile_tab/profile_tab.dart';
 import 'package:provider/provider.dart';
 import 'package:movies/providers/settings_provider.dart';

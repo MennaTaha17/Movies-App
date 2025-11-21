@@ -1,6 +1,6 @@
 // This is a generated file; do not edit or check into version control.
-FLUTTER_ROOT=P:\flutter_windows_3.29.3-stable\flutter
-FLUTTER_APPLICATION_PATH=D:\flutter projects\movies
+FLUTTER_ROOT=E:\environment flutter\flutter
+FLUTTER_APPLICATION_PATH=E:\environment flutter\myLearn\Assignments\Movies-App
 COCOAPODS_PARALLEL_CODE_SIGN=true
 FLUTTER_TARGET=lib\main.dart
 FLUTTER_BUILD_DIR=build
