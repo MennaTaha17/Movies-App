@@ -3,8 +3,8 @@ import 'package:movies/common/Theme/app_colors.dart';
 
 import '../../gen/assets.gen.dart';
 
-class MovieCard extends StatelessWidget {
-  const MovieCard({super.key});
+class MovieCardHome extends StatelessWidget {
+  const MovieCardHome({super.key});
 
   @override
   Widget build(BuildContext context) {

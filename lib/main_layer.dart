@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:movies/Tabs/Home%20tab/home_tab.dart';
 import 'package:movies/common/Theme/app_colors.dart';
 import 'package:movies/tabs/profile_tab/profile_tab.dart';
 
+import 'Tabs/browse_tab.dart';
 import 'gen/assets.gen.dart';
 
 class MainLayer extends StatefulWidget {
@@ -15,9 +17,9 @@ class MainLayer extends StatefulWidget {
 
 class _MainLayerState extends State<MainLayer> {
   List<Widget> tabs = [
+    HomeTab(),
     Container(color: AppColors.blackColor),
-    Container(color: AppColors.blackColor),
-    Container(color: AppColors.blackColor),
+    BrowseScreen(),
     ProfileTab(),
   ];
   int currentIndex = 0;
@@ -43,11 +45,10 @@ class _MainLayerState extends State<MainLayer> {
                   padding: const EdgeInsets.only(top: 10),
                   child: Assets.asstes.images.svg.unselIcHome.svg(),
                 ),
-                activeIcon:
-                  Padding(
-                    padding: const EdgeInsets.only(top: 10),
-                    child: Assets.asstes.images.svg.selIcHome.svg(),
-                  ),
+                activeIcon: Padding(
+                  padding: const EdgeInsets.only(top: 10),
+                  child: Assets.asstes.images.svg.selIcHome.svg(),
+                ),
                 label: "",
               ),
               BottomNavigationBarItem(
@@ -60,8 +61,9 @@ class _MainLayerState extends State<MainLayer> {
                   child: Assets.asstes.images.svg.selIcSearch.svg(),
                 ),
                 label: "",
-              ), BottomNavigationBarItem(
-                icon:Padding(
+              ),
+              BottomNavigationBarItem(
+                icon: Padding(
                   padding: const EdgeInsets.only(top: 10),
                   child: Assets.asstes.images.svg.unselIcExplore.svg(),
                 ),
@@ -72,7 +74,7 @@ class _MainLayerState extends State<MainLayer> {
                 label: "",
               ),
               BottomNavigationBarItem(
-                icon:Padding(
+                icon: Padding(
                   padding: const EdgeInsets.only(top: 10),
                   child: Assets.asstes.images.svg.unselIcProfiel.svg(),
                 ),
