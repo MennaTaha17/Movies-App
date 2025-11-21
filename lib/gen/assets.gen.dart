@@ -37,6 +37,10 @@ class $AsstesImagesGen {
 class $AsstesProfileImagesGen {
   const $AsstesProfileImagesGen();
 
+  /// File path: asstes/profileImages/316662-P9J1RJ-122 1.png
+  AssetGenImage get a316662P9J1RJ1221 =>
+      const AssetGenImage('asstes/profileImages/316662-P9J1RJ-122 1.png');
+
   /// File path: asstes/profileImages/image 1.png
   AssetGenImage get image1 =>
       const AssetGenImage('asstes/profileImages/image 1.png');
@@ -75,6 +79,7 @@ class $AsstesProfileImagesGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [
+    a316662P9J1RJ1221,
     image1,
     image2,
     image3,
@@ -90,6 +95,22 @@ class $AsstesProfileImagesGen {
 class $AsstesImagesPngGen {
   const $AsstesImagesPngGen();
 
+  /// File path: asstes/images/png/Forgot password-bro 1.png
+  AssetGenImage get forgotPasswordBro1 =>
+      const AssetGenImage('asstes/images/png/Forgot password-bro 1.png');
+
+  /// File path: asstes/images/png/avatar(1).png
+  AssetGenImage get avatar1 =>
+      const AssetGenImage('asstes/images/png/avatar(1).png');
+
+  /// File path: asstes/images/png/avatar(2).png
+  AssetGenImage get avatar2 =>
+      const AssetGenImage('asstes/images/png/avatar(2).png');
+
+  /// File path: asstes/images/png/avatar(3).png
+  AssetGenImage get avatar3 =>
+      const AssetGenImage('asstes/images/png/avatar(3).png');
+
   /// File path: asstes/images/png/blue-screen.png
   AssetGenImage get blueScreen =>
       const AssetGenImage('asstes/images/png/blue-screen.png');
@@ -98,9 +119,21 @@ class $AsstesImagesPngGen {
   AssetGenImage get darkScreen =>
       const AssetGenImage('asstes/images/png/dark_screen.png');
 
+  /// File path: asstes/images/png/egypt_flag.png
+  AssetGenImage get egyptFlag =>
+      const AssetGenImage('asstes/images/png/egypt_flag.png');
+
+  /// File path: asstes/images/png/google_icon.png
+  AssetGenImage get googleIcon =>
+      const AssetGenImage('asstes/images/png/google_icon.png');
+
   /// File path: asstes/images/png/gray_screen.png
   AssetGenImage get grayScreen =>
       const AssetGenImage('asstes/images/png/gray_screen.png');
+
+  /// File path: asstes/images/png/im_popcorn.png
+  AssetGenImage get imPopcorn =>
+      const AssetGenImage('asstes/images/png/im_popcorn.png');
 
   /// File path: asstes/images/png/purple_screen.png
   AssetGenImage get purpleScreen =>
@@ -110,50 +143,108 @@ class $AsstesImagesPngGen {
   AssetGenImage get redScreen =>
       const AssetGenImage('asstes/images/png/red_screen.png');
 
+  /// File path: asstes/images/png/usatate_flag.png
+  AssetGenImage get usatateFlag =>
+      const AssetGenImage('asstes/images/png/usatate_flag.png');
+
+  /// File path: asstes/images/png/video_image.png
+  AssetGenImage get videoImage =>
+      const AssetGenImage('asstes/images/png/video_image.png');
+
   /// List of all assets
   List<AssetGenImage> get values => [
+    forgotPasswordBro1,
+    avatar1,
+    avatar2,
+    avatar3,
     blueScreen,
     darkScreen,
+    egyptFlag,
+    googleIcon,
     grayScreen,
+    imPopcorn,
     purpleScreen,
     redScreen,
+    usatateFlag,
+    videoImage,
   ];
 }
 
 class $AsstesImagesSvgGen {
   const $AsstesImagesSvgGen();
 
-  /// File path: asstes/images/svg/ic_explore.svg
-  SvgGenImage get icExplore =>
-      const SvgGenImage('asstes/images/svg/ic_explore.svg');
+  /// File path: asstes/images/svg/ic_history.svg
+  SvgGenImage get icHistory =>
+      const SvgGenImage('asstes/images/svg/ic_history.svg');
 
-  /// File path: asstes/images/svg/ic_home.svg
-  SvgGenImage get icHome => const SvgGenImage('asstes/images/svg/ic_home.svg');
+  /// File path: asstes/images/svg/ic_watch_list.svg
+  SvgGenImage get icWatchList =>
+      const SvgGenImage('asstes/images/svg/ic_watch_list.svg');
 
-  /// File path: asstes/images/svg/ic_profiel.svg
-  SvgGenImage get icProfiel =>
-      const SvgGenImage('asstes/images/svg/ic_profiel.svg');
-
-  /// File path: asstes/images/svg/ic_search.svg
-  SvgGenImage get icSearch =>
-      const SvgGenImage('asstes/images/svg/ic_search.svg');
+  /// File path: asstes/images/svg/im_forget_password.svg
+  SvgGenImage get imForgetPassword =>
+      const SvgGenImage('asstes/images/svg/im_forget_password.svg');
 
   /// File path: asstes/images/svg/movie_logo.svg
   SvgGenImage get movieLogo =>
       const SvgGenImage('asstes/images/svg/movie_logo.svg');
 
+  /// File path: asstes/images/svg/popcorn_im.svg
+  SvgGenImage get popcornIm =>
+      const SvgGenImage('asstes/images/svg/popcorn_im.svg');
+
   /// File path: asstes/images/svg/route_logo.svg
   SvgGenImage get routeLogo =>
       const SvgGenImage('asstes/images/svg/route_logo.svg');
 
+  /// File path: asstes/images/svg/sel_ic_explore.svg
+  SvgGenImage get selIcExplore =>
+      const SvgGenImage('asstes/images/svg/sel_ic_explore.svg');
+
+  /// File path: asstes/images/svg/sel_ic_home.svg
+  SvgGenImage get selIcHome =>
+      const SvgGenImage('asstes/images/svg/sel_ic_home.svg');
+
+  /// File path: asstes/images/svg/sel_ic_profile.svg
+  SvgGenImage get selIcProfile =>
+      const SvgGenImage('asstes/images/svg/sel_ic_profile.svg');
+
+  /// File path: asstes/images/svg/sel_ic_search.svg
+  SvgGenImage get selIcSearch =>
+      const SvgGenImage('asstes/images/svg/sel_ic_search.svg');
+
+  /// File path: asstes/images/svg/unsel_ic_explore.svg
+  SvgGenImage get unselIcExplore =>
+      const SvgGenImage('asstes/images/svg/unsel_ic_explore.svg');
+
+  /// File path: asstes/images/svg/unsel_ic_home.svg
+  SvgGenImage get unselIcHome =>
+      const SvgGenImage('asstes/images/svg/unsel_ic_home.svg');
+
+  /// File path: asstes/images/svg/unsel_ic_profiel.svg
+  SvgGenImage get unselIcProfiel =>
+      const SvgGenImage('asstes/images/svg/unsel_ic_profiel.svg');
+
+  /// File path: asstes/images/svg/unsel_ic_search.svg
+  SvgGenImage get unselIcSearch =>
+      const SvgGenImage('asstes/images/svg/unsel_ic_search.svg');
+
   /// List of all assets
   List<SvgGenImage> get values => [
-    icExplore,
-    icHome,
-    icProfiel,
-    icSearch,
+    icHistory,
+    icWatchList,
+    imForgetPassword,
     movieLogo,
+    popcornIm,
     routeLogo,
+    selIcExplore,
+    selIcHome,
+    selIcProfile,
+    selIcSearch,
+    unselIcExplore,
+    unselIcHome,
+    unselIcProfiel,
+    unselIcSearch,
   ];
 }
 
