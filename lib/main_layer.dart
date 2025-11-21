@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:movies/Tabs/Home%20tab/home_tab.dart';
+import 'package:movies/Tabs/Search%20Tab/search_tab.dart';
 import 'package:movies/common/Theme/app_colors.dart';
 import 'package:movies/tabs/profile_tab/profile_tab.dart';
 
@@ -18,7 +19,7 @@ class MainLayer extends StatefulWidget {
 class _MainLayerState extends State<MainLayer> {
   List<Widget> tabs = [
     HomeTab(),
-    Container(color: AppColors.blackColor),
+    SearchScreen(),
     BrowseScreen(),
     ProfileTab(),
   ];
