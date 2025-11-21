@@ -1,10 +1,12 @@
+import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:movies/common/Theme/app_colors.dart';
 import 'package:movies/network/auth_services.dart';
+import 'package:provider/provider.dart';
 import '../../common/Widget/custom_main_button.dart';
 import '../../common/Widget/custom_text_filed.dart';
 import '../../common/Widget/show_delete_dialog.dart';
+import '../../providers/settings_provider.dart';
 import '../auth/forget_password_screen.dart';
 
 class UpdateProfile extends StatefulWidget {
@@ -15,19 +17,8 @@ class UpdateProfile extends StatefulWidget {
 }
 
 class _UpdateProfileState extends State<UpdateProfile> {
-  final List<String> avatarImages = [
-    'asstes/profileImages/image 1.png',
-    'asstes/profileImages/image 2.png',
-    'asstes/profileImages/image 3.png',
-    'asstes/profileImages/image 4.png',
-    'asstes/profileImages/image 5.png',
-    'asstes/profileImages/image 6.png',
-    'asstes/profileImages/image 7.png',
-    'asstes/profileImages/image 8.png',
-    'asstes/profileImages/image 9.png',
-  ];
-  String selectedAvatar = 'asstes/profileImages/image 1.png';
   void _showAvatarPicker() {
+    final avatarPro = context.read<SettingsProvider>();
     showModalBottomSheet(
       backgroundColor: AppColors.grayColor,
       context: context,
@@ -36,19 +27,19 @@ class _UpdateProfileState extends State<UpdateProfile> {
           padding: const EdgeInsets.all(19.0),
           child: GridView.builder(
             shrinkWrap: true,
-            itemCount: avatarImages.length,
+            itemCount: avatarPro.avatarImages.length,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 3,
               crossAxisSpacing: 18,
               mainAxisSpacing: 19,
             ),
             itemBuilder: (context, index) {
-              final currentAvatar = avatarImages[index];
-              final isSelected = currentAvatar == selectedAvatar;
+              final currentAvatar = avatarPro.avatarImages[index];
+              final isSelected = currentAvatar ==   avatarPro.selectedAvatar;
               return GestureDetector(
                 onTap: () {
                   setState(() {
-                    selectedAvatar = currentAvatar;
+                avatarPro.editAvatarImage(currentAvatar);
                   });
                   Navigator.of(context).pop();
                 },
@@ -82,11 +73,13 @@ class _UpdateProfileState extends State<UpdateProfile> {
 
   @override
   Widget build(BuildContext context) {
+    final avatarPro = context.watch<SettingsProvider>();
     return Scaffold(
       resizeToAvoidBottomInset: false, // The screen will not move
       appBar: AppBar(
+        iconTheme: IconThemeData(color: AppColors.yellowColor),
         title: Text(
-          "Pick Avatar",
+          "Pick Avatar",               // TODO localization
           style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w400,
@@ -104,7 +97,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
                 onTap: _showAvatarPicker,
                 child: ClipRRect(
                   child: Image.asset(
-                    selectedAvatar,
+                    avatarPro.selectedAvatar,
                     fit: BoxFit.fill,
                     width: 140,
                     height: 140,
@@ -130,7 +123,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
                 Navigator.of(context).pushNamed(ForgetPasswordScreen.routeName);
               },
               child: Text(
-                "Reset Password",
+                "Reset Password",           // TODO localization
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.w400,
@@ -140,7 +133,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
             ),
             Spacer(),
             CustomMainButton(
-              text: "Delete Account",
+              text: "Delete Account",                  // TODO localization
               color: AppColors.redColor,
               textColor: AppColors.whiteColor,
               onPressed: () async {
@@ -148,25 +141,27 @@ class _UpdateProfileState extends State<UpdateProfile> {
                 if (confirm == true) {
                   try {
                     await AuthServices.deleteUser();
-                    Fluttertoast.showToast(
-                      msg: "The account has been successfully deleted",
-                      backgroundColor: Colors.green,
-                      toastLength: Toast.LENGTH_LONG,
-                    );
+                    await Flushbar(
+                      duration: Duration(seconds: 3),
+                      backgroundColor: AppColors.greenColor,
+                      title: "Success",                // TODO localization
+                      message: "The account has been successfully deleted.",          // TODO localization
+                    ).show(context);
                     Navigator.of(context).pushReplacementNamed('/loginScreen');
                   } catch (e) {
-                    Fluttertoast.showToast(
-                      msg: e.toString(),
-                      backgroundColor: Colors.red,
-                      toastLength: Toast.LENGTH_LONG,
-                    );
+                    await Flushbar(
+                      duration: Duration(seconds: 3),
+                      title: "Error.",                // TODO localization
+                      message: e.toString(),
+                      backgroundColor: AppColors.redColor,
+                    ).show(context);
                   }
                 }
               },
             ),
             SizedBox(height: 20),
             CustomMainButton(
-              text: "Update Data",
+              text: "Update Data",              // TODO localization
               color: AppColors.yellowColor,
               textColor: AppColors.blackColor,
               onPressed: () {}, //TODO : logic
