@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../common/Theme/app_colors.dart';
-import '../../../common/Widget/movie_card.dart';
+import '../../../common/Widget/movie_card_home.dart';
 import '../../../gen/assets.gen.dart';
 
 class FirstView extends StatelessWidget {
@@ -43,7 +43,7 @@ class FirstView extends StatelessWidget {
                   viewportFraction: 0.6,
                   initialPage: 1,
                 ),
-                itemBuilder: (BuildContext context, int index) => MovieCard(),
+                itemBuilder: (BuildContext context, int index) => MovieCardHome(),
               ),
             ),
             Assets.asstes.images.png.homeCenter.image(),

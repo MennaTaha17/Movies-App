@@ -132,7 +132,7 @@ class _ProfileTabState extends State<ProfileTab> {
                         color: AppColors.blackColor,
                         child: Center(
                           child: Container(
-                            child: Assets.asstes.images.png.imPopcorn.image(),
+                            child: Assets.asstes.images.png.popcorn1.image(),
                             height: 130,
                             width: 130,
                           ),

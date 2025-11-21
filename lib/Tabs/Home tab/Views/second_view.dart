@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../common/Theme/app_colors.dart';
-import '../../../common/Widget/movie_card.dart';
+import '../../../common/Widget/movie_card_home.dart';
 import '../../../gen/assets.gen.dart';
 import '../../../screens/update profile/update_profile.dart';
 
@@ -60,7 +60,7 @@ class SecondView extends StatelessWidget {
             itemBuilder:
                 (context, index) => Padding(
               padding: const EdgeInsets.only(right: 16),
-              child: MovieCard(),
+              child: MovieCardHome(),
             ),
           ),
         ),
