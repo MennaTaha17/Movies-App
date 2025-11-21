@@ -6,6 +6,7 @@ import 'package:movies/screens/auth/login_screen.dart';
 import 'package:movies/screens/auth/sign_up_screen.dart';
 import 'package:movies/screens/update%20profile/update_profile.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'Tabs/Home tab/home_tab.dart';
 import 'firebase_options.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -30,8 +31,9 @@ class MyApp extends StatelessWidget {
       OtpVerification.routeName:(_) => OtpVerification(),
       SignUpScreen.routeName:(_) => SignUpScreen(),
       UpdateProfile.routeName:(_) => UpdateProfile(),
+      HomeTab.routeName:(_) => HomeTab(),
     },
-      initialRoute: UpdateProfile.routeName,
+      initialRoute: HomeTab.routeName,
     );
   }
 }
