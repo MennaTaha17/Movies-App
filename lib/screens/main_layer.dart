@@ -7,8 +7,8 @@ import 'package:movies/providers/home_provider.dart';
 import 'package:movies/tabs/profile_tab/profile_tab.dart';
 import 'package:provider/provider.dart';
 
-import 'Tabs/browse_tab.dart';
-import 'gen/assets.gen.dart';
+import '../gen/assets.gen.dart';
+import '../tabs/browse_tab.dart';
 
 class MainLayer extends StatefulWidget {
   static const String routeName = '/main_layer';
@@ -46,10 +46,11 @@ class _MainLayerState extends State<MainLayer> {
                   padding: const EdgeInsets.only(top: 10),
                   child: Assets.asstes.images.svg.unselIcHome.svg(),
                 ),
-                activeIcon: Padding(
-                  padding: const EdgeInsets.only(top: 10),
-                  child: Assets.asstes.images.svg.selIcHome.svg(),
-                ),
+                activeIcon:
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10),
+                    child: Assets.asstes.images.svg.selIcHome.svg(),
+                  ),
                 label: "",
               ),
               BottomNavigationBarItem(

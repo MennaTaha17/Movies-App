@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:movies/main_layer.dart';
+import 'package:movies/screens/main_layer.dart';
 import 'package:movies/screens/auth/forget_password_screen.dart';
 import 'package:movies/common/Theme/theme.dart';
 import 'package:movies/screens/auth/login_screen.dart';
 import 'package:movies/screens/auth/sign_up_screen.dart';
+import 'package:movies/screens/movie_details/movie_details.dart';
+import 'package:movies/screens/movie_details/movie_list_screen.dart';
 import 'package:movies/screens/update%20profile/update_profile.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'Tabs/Home tab/home_tab.dart';
 import 'package:movies/tabs/profile_tab/profile_tab.dart';
 import 'package:provider/provider.dart';
 import 'package:movies/providers/settings_provider.dart';
@@ -26,25 +29,25 @@ void main() async {
     ),
   );
 }
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: AppTheme.appTheme,
       title: 'Movies App',
-      routes: {
-        LoginScreen.routeName: (_) => LoginScreen(),
-        ForgetPasswordScreen.routeName: (_) => ForgetPasswordScreen(),
-        SignUpScreen.routeName: (_) => SignUpScreen(),
-        UpdateProfile.routeName: (_) => UpdateProfile(),
-        ProfileTab.routeName: (_) => ProfileTab(),
-        MainLayer.routeName: (_) => MainLayer(),
-      },
-      initialRoute: MainLayer.routeName,
+    routes: {
+        LoginScreen.routeName:(_) => LoginScreen(),
+      ForgetPasswordScreen.routeName:(_) => ForgetPasswordScreen(),
+      SignUpScreen.routeName:(_) => SignUpScreen(),
+      UpdateProfile.routeName:(_) => UpdateProfile(),
+      ProfileTab.routeName:(_) => ProfileTab(),
+      MainLayer.routeName:(_)=> MainLayer(),
+      MovieDetailsScreen.routeName:(_) => MovieDetailsScreen(),
+      MovieListScreen.routeName:(_)=> MovieListScreen(),
+    },
+      initialRoute: MovieListScreen.routeName,
     );
   }
 }
