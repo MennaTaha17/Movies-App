@@ -149,38 +149,3 @@ class _ProfileTabState extends State<ProfileTab> {
     );
   }
 }
-
-// Row(
-// mainAxisAlignment: MainAxisAlignment.spaceAround,
-// children: [
-// Assets.asstes.images.svg.icWatchList.svg(),
-// Assets.asstes.images.svg.icHistory.svg(),
-// ],
-// ),
-// Row(
-// mainAxisAlignment: MainAxisAlignment.spaceAround,
-// children: [
-// TextButton(
-// onPressed: () {},
-// child: Text(
-// 'Watch List', // TODO localization
-// style: TextStyle(
-// color: AppColors.whiteColor,
-// fontSize: 20,
-// fontWeight: FontWeight.w400,
-// ),
-// ),
-// ),
-// TextButton(
-// onPressed: () {},
-// child: Text(
-// 'History', // TODO localization
-// style: TextStyle(
-// color: AppColors.whiteColor,
-// fontSize: 20,
-// fontWeight: FontWeight.w400,
-// ),
-// ),
-// ),
-// ],
-// ),

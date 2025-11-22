@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:movies/main_layer.dart';
+import 'package:movies/screens/main_layer.dart';
 import 'package:movies/screens/auth/forget_password_screen.dart';
 import 'package:movies/common/Theme/theme.dart';
 import 'package:movies/screens/auth/login_screen.dart';
 import 'package:movies/screens/auth/sign_up_screen.dart';
+import 'package:movies/screens/movie_details/movie_details.dart';
+import 'package:movies/screens/movie_details/movie_list_screen.dart';
 import 'package:movies/screens/update%20profile/update_profile.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'Tabs/Home tab/home_tab.dart';
@@ -23,10 +25,8 @@ void main() async {
         ],
           child: const MyApp()));
 }
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -40,8 +40,10 @@ class MyApp extends StatelessWidget {
       UpdateProfile.routeName:(_) => UpdateProfile(),
       ProfileTab.routeName:(_) => ProfileTab(),
       MainLayer.routeName:(_)=> MainLayer(),
+      MovieDetailsScreen.routeName:(_) => MovieDetailsScreen(),
+      MovieListScreen.routeName:(_)=> MovieListScreen(),
     },
-      initialRoute: MainLayer.routeName,
+      initialRoute: MovieListScreen.routeName,
     );
   }
 }

@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:movies/common/Theme/app_colors.dart';
 import 'package:movies/tabs/profile_tab/profile_tab.dart';
 
-import 'gen/assets.gen.dart';
+import '../gen/assets.gen.dart';
 
 class MainLayer extends StatefulWidget {
   static const String routeName = '/main_layer';
