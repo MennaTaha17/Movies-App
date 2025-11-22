@@ -143,6 +143,10 @@ class $AsstesImagesPngGen {
   AssetGenImage get imPopcorn =>
       const AssetGenImage('asstes/images/png/im_popcorn.png');
 
+  /// File path: asstes/images/png/popcorn1.png
+  AssetGenImage get popcorn1 =>
+      const AssetGenImage('asstes/images/png/popcorn1.png');
+
   /// File path: asstes/images/png/purple_screen.png
   AssetGenImage get purpleScreen =>
       const AssetGenImage('asstes/images/png/purple_screen.png');
@@ -173,6 +177,7 @@ class $AsstesImagesPngGen {
     homeCenter,
     homeHader,
     imPopcorn,
+    popcorn1,
     purpleScreen,
     redScreen,
     usatateFlag,

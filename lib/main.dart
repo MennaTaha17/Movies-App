@@ -12,18 +12,22 @@ import 'Tabs/Home tab/home_tab.dart';
 import 'package:movies/tabs/profile_tab/profile_tab.dart';
 import 'package:provider/provider.dart';
 import 'package:movies/providers/settings_provider.dart';
+import 'providers/home_provider.dart';
 import 'firebase_options.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
   runApp(
-      MultiProvider(
-        providers: [
-          ChangeNotifierProvider(create: (context) => SettingsProvider(),)
-        ],
-          child: const MyApp()));
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => SettingsProvider()),
+        ChangeNotifierProvider(create: (_) => HomeProvider()),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -47,4 +51,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
