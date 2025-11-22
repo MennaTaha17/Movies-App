@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:movies/common/Theme/app_colors.dart';
 
-import '../../gen/assets.gen.dart';
+import '../../model/home_movie_model.dart';
 
 class MovieCardHome extends StatelessWidget {
-  const MovieCardHome({super.key});
+  final MovieModel movie;
+  const MovieCardHome({super.key, required this.movie});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +13,12 @@ class MovieCardHome extends StatelessWidget {
       children: [
         ClipRRect(
           borderRadius: BorderRadius.circular(20),
-          child: Assets.asstes.images.png.grayScreen.image(),
+          child: Image.network(
+            movie.image,
+            width: 200,
+            height: 300,
+            fit: BoxFit.cover,
+          ),
         ),
         Container(
           margin: EdgeInsets.only(left: 9, top: 11),
@@ -26,7 +32,7 @@ class MovieCardHome extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Text(
-                "7.7",
+                movie.rating.toString(),
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 16,
