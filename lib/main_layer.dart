@@ -3,7 +3,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:movies/Tabs/Home%20tab/home_tab.dart';
 import 'package:movies/Tabs/Search%20Tab/search_tab.dart';
 import 'package:movies/common/Theme/app_colors.dart';
+import 'package:movies/providers/home_provider.dart';
 import 'package:movies/tabs/profile_tab/profile_tab.dart';
+import 'package:provider/provider.dart';
 
 import 'Tabs/browse_tab.dart';
 import 'gen/assets.gen.dart';
@@ -17,12 +19,7 @@ class MainLayer extends StatefulWidget {
 }
 
 class _MainLayerState extends State<MainLayer> {
-  List<Widget> tabs = [
-    HomeTab(),
-    SearchScreen(),
-    BrowseScreen(),
-    ProfileTab(),
-  ];
+  List<Widget> tabs = [HomeTab(), SearchScreen(), BrowseScreen(), ProfileTab()];
   int currentIndex = 0;
   @override
   Widget build(BuildContext context) {
@@ -39,6 +36,9 @@ class _MainLayerState extends State<MainLayer> {
               setState(() {
                 currentIndex = value;
               });
+              if (value == 0) {
+                Provider.of<HomeProvider>(context, listen: false).rotateGenre();
+              }
             },
             items: [
               BottomNavigationBarItem(
