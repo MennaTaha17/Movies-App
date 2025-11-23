@@ -35,11 +35,11 @@ class _UpdateProfileState extends State<UpdateProfile> {
             ),
             itemBuilder: (context, index) {
               final currentAvatar = avatarPro.avatarImages[index];
-              final isSelected = currentAvatar ==   avatarPro.selectedAvatar;
+              final isSelected = currentAvatar == avatarPro.selectedAvatar;
               return GestureDetector(
                 onTap: () {
                   setState(() {
-                avatarPro.editAvatarImage(currentAvatar);
+                    avatarPro.editAvatarImage(currentAvatar);
                   });
                   Navigator.of(context).pop();
                 },
@@ -71,6 +71,27 @@ class _UpdateProfileState extends State<UpdateProfile> {
     );
   }
 
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _phoneController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    _loadUser();
+  }
+
+  void _loadUser() async {
+    final user = await AuthServices.getUserInfo();
+    if (user != null) {
+      setState(() {
+        _nameController.text = user.name;
+        _phoneController.text = user.phone;
+        _emailController.text = user.email;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final avatarPro = context.watch<SettingsProvider>();
@@ -79,7 +100,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
       appBar: AppBar(
         iconTheme: IconThemeData(color: AppColors.yellowColor),
         title: Text(
-          "Pick Avatar",               // TODO localization
+          "Pick Avatar", // TODO localization
           style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w400,
@@ -107,13 +128,15 @@ class _UpdateProfileState extends State<UpdateProfile> {
             ),
             SizedBox(height: 30),
             CustomTextFiled(
-              text: "Mark Gamal", //TODO : logic
+              // text: "Mark Gamal", //TODO : logic
+              controller: _nameController,
               fontSize: 20,
               icon: Icon(Icons.person, size: 30, color: AppColors.whiteColor),
             ),
             SizedBox(height: 20),
             CustomTextFiled(
-              text: "01200000000", //TODO : logic
+              // text: "01200000000", //TODO : logic
+              controller: _phoneController,
               fontSize: 20,
               icon: Icon(Icons.call, size: 30, color: AppColors.whiteColor),
             ),
@@ -123,7 +146,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
                 Navigator.of(context).pushNamed(ForgetPasswordScreen.routeName);
               },
               child: Text(
-                "Reset Password",           // TODO localization
+                "Reset Password", // TODO localization
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.w400,
@@ -133,7 +156,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
             ),
             Spacer(),
             CustomMainButton(
-              text: "Delete Account",                  // TODO localization
+              text: "Delete Account", // TODO localization
               color: AppColors.redColor,
               textColor: AppColors.whiteColor,
               onPressed: () async {
@@ -144,14 +167,15 @@ class _UpdateProfileState extends State<UpdateProfile> {
                     await Flushbar(
                       duration: Duration(seconds: 3),
                       backgroundColor: AppColors.greenColor,
-                      title: "Success",                // TODO localization
-                      message: "The account has been successfully deleted.",          // TODO localization
+                      title: "Success", // TODO localization
+                      message:
+                          "The account has been successfully deleted.", // TODO localization
                     ).show(context);
                     Navigator.of(context).pushReplacementNamed('/loginScreen');
                   } catch (e) {
                     await Flushbar(
                       duration: Duration(seconds: 3),
-                      title: "Error.",                // TODO localization
+                      title: "Error.", // TODO localization
                       message: e.toString(),
                       backgroundColor: AppColors.redColor,
                     ).show(context);
@@ -161,10 +185,22 @@ class _UpdateProfileState extends State<UpdateProfile> {
             ),
             SizedBox(height: 20),
             CustomMainButton(
-              text: "Update Data",              // TODO localization
+              text: "Update Data", // TODO localization
               color: AppColors.yellowColor,
               textColor: AppColors.blackColor,
-              onPressed: () {}, //TODO : logic
+              onPressed: () async {
+                await AuthServices.updateUserData(
+                  name: _nameController.text.trim(),
+                  phone: _phoneController.text.trim(),
+                );
+                Flushbar(
+                  duration: Duration(seconds: 3),
+                  backgroundColor: AppColors.greenColor,
+                  title: "Success", // TODO localization
+                  message:
+                  "The account has been successfully deleted.", // TODO localization
+                ).show(context);
+              },
             ),
           ],
         ),

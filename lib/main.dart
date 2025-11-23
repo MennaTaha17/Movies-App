@@ -47,7 +47,7 @@ class MyApp extends StatelessWidget {
       MovieDetailsScreen.routeName:(_) => MovieDetailsScreen(),
       MovieListScreen.routeName:(_)=> MovieListScreen(),
     },
-      initialRoute: MovieListScreen.routeName,
+      initialRoute: LoginScreen.routeName,
     );
   }
 }

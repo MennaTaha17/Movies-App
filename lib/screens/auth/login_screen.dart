@@ -1,18 +1,31 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:movies/common/Theme/app_colors.dart';
 import 'package:movies/common/Widget/custom_text_filed.dart';
-import 'package:movies/screens/auth/sign_up_screen.dart';
-import 'package:movies/screens/auth/forget_password_screen.dart';
-import 'package:movies/screens/update%20profile/update_profile.dart';
+import 'package:movies/network/auth_services.dart';
+import 'package:movies/screens/update profile/update_profile.dart';
 
-class LoginScreen extends StatelessWidget {
+import '../../gen/assets.gen.dart';
+
+class LoginScreen extends StatefulWidget {
   static const String routeName = '/loginScreen';
   const LoginScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    GlobalKey<FormState> _globalKey = GlobalKey<FormState>();
+  State<LoginScreen> createState() => _LoginScreenState();
+}
 
+class _LoginScreenState extends State<LoginScreen> {
+
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final GlobalKey<FormState> _globalKey = GlobalKey<FormState>();
+
+  bool loading = false;
+
+  @override
+  Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
@@ -23,21 +36,19 @@ class LoginScreen extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.asset('assets/images/png/video_image.png'),
+
+                  const SizedBox(height: 60),
+                 Assets.asstes.images.png.videoImage.image(),
                   const SizedBox(height: 50),
 
-                  // Email field
+                  // Email
                   CustomTextFiled(
+                    controller: _emailController,
                     icon: Icons.email_rounded,
                     text: 'Email',
                     validator: (value) {
-                      bool validateEmail() => RegExp(
-                        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
-                      ).hasMatch(value ?? '');
                       if (value == null || value.isEmpty) {
                         return 'Email is required';
-                      } else if (!validateEmail()) {
-                        return 'Invalid email';
                       }
                       return null;
                     },
@@ -45,194 +56,64 @@ class LoginScreen extends StatelessWidget {
 
                   const SizedBox(height: 22),
 
-                  // Password field
+                  // Password
                   CustomTextFiled(
+                    controller: _passwordController,
                     icon: Icons.lock,
                     text: 'Password',
                     isPassword: true,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Password is required';
-                      } else if (value.length < 5) {
-                        return 'password must ba at least 5 characters';
                       }
                       return null;
                     },
                   ),
 
-                  const SizedBox(height: 17.18),
+                  const SizedBox(height: 30),
 
-                  // Forget Password
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: TextButton(
-                      onPressed: () {
-                        Navigator.pushReplacementNamed(
-                            context, ForgetPasswordScreen.routeName);
-                      },
-                      style: TextButton.styleFrom(
-                        foregroundColor: AppColors.yellowColor,
-                        textStyle: const TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                      child: const Text("Forget Password ?"),
-                    ),
-                  ),
-
-                  const SizedBox(height: 22),
-
-                  // Login button
                   SizedBox(
-                    height: 56,
+                    height: 55,
                     child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.of(context).pushNamed(UpdateProfile.routeName);
+                      onPressed: () async {
+
+                        if(!_globalKey.currentState!.validate()) return;
+
+                        setState(() { loading = true; });
+
+                        final user = await AuthServices.LogInWithEmail(
+                          email: _emailController.text.trim(),
+                          password: _passwordController.text.trim(),
+                        );
+
+                        setState(() { loading = false; });
+
+                        if(user == null){
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text("Invalid email or password")),
+                          );
+                          return;
+                        }
+
+                        Navigator.pushReplacementNamed(context, UpdateProfile.routeName);
                       },
+
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.yellowColor,
                         foregroundColor: AppColors.blackColor,
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(15)),
+                          borderRadius: BorderRadius.circular(12),
                         ),
                       ),
-                      child: const Text(
+                      child: loading
+                          ? const CircularProgressIndicator()
+                          : const Text(
                         "Login",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
+                        style: TextStyle(fontSize: 18),
                       ),
                     ),
                   ),
 
-                  const SizedBox(height: 20),
-
-                  // Create account text
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text(
-                        "Don't Have Account? ",
-                        style: TextStyle(color: Colors.white70, fontSize: 16),
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.of(context).pushNamed(SignUpScreen.routeName);
-
-                        },
-                        style: TextButton.styleFrom(
-                          foregroundColor: AppColors.yellowColor,
-                          textStyle: const TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        child: const Text("Create account"),
-                      ),
-                    ],
-                  ),
-
-                  // Divider line
-                  Container(
-                    width: 60,
-                    height: 1,
-                    color: AppColors.yellowColor,
-                  ),
-
-                  const SizedBox(height: 28),
-
-                  // OR button
-                  SizedBox(
-                    height: 56,
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: AppColors.yellowColor,
-                        foregroundColor: AppColors.blackColor,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(15)),
-                        ),
-                      ),
-                      child: const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 10),
-                        child: Text(
-                          "OR",
-                          style: TextStyle(
-                            color: AppColors.blackColor,
-                            fontSize: 16,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-
-                  const SizedBox(height: 28),
-
-                  // Login with Google
-                  SizedBox(
-                    height: 56,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: AppColors.yellowColor,
-                        foregroundColor: AppColors.blackColor,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(12)),
-                        ),
-                      ),
-                      onPressed: () {},
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            'assets/images/png/google_icon.png',
-                            width: 26,
-                            height: 26,
-                          ),
-                          const SizedBox(width: 10),
-                          const Text(
-                            'Login With Google',
-                            style: TextStyle(fontSize: 20),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-
-                  const SizedBox(height: 25),
-
-                  // Flags container
-                  Container(
-                    padding: const EdgeInsets.all(4),
-                    decoration: BoxDecoration(
-                      color: Colors.transparent,
-                      border: Border.all(
-                        color: AppColors.yellowColor,
-                        width: 2,
-                      ),
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          'assets/images/png/usatate_flag.png',
-                          width: 26,
-                          height: 26,
-                        ),
-                        const SizedBox(width: 15),
-                        Image.asset(
-                          'assets/images/png/egypt_flag.png',
-                          width: 26,
-                          height: 26,
-                        ),
-                      ],
-                    ),
-                  ),
-
-                  const SizedBox(height: 25),
                 ],
               ),
             ),
