@@ -24,9 +24,9 @@ class MovieModel {
       rating: (json['vote_average'] ?? 0).toDouble(),
       posterPath: json['poster_path'],
       overview: json['overview'] ?? '',
+      runtime: null,
       releaseDate: json['release_date'],
 
-      runtime: null,
     );
   }
 

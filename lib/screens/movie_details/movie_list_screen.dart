@@ -44,7 +44,7 @@ class _MovieListScreenState extends State<MovieListScreen> {
                   onTap: () {
                     Navigator.pushNamed(
                       context,
-                      MovieDetailsScreen.routeName,
+                      MovieDetails.routeName,
                       arguments: movie.id,
                     );
                   },

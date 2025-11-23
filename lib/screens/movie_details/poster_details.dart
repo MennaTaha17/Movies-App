@@ -2,14 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:movies/common/Theme/app_colors.dart';
 import 'package:movies/model/movie_model.dart';
 import 'package:movies/screens/movie_details/poster_image.dart';
+import 'package:provider/provider.dart';
 
-class PosterDetails extends StatelessWidget {
+import '../../providers/watch_list_provider.dart';
+import '../../tabs/profile_tab/profile_tab.dart';
+
+class PosterDetails extends StatefulWidget {
   final MovieModel movie;
 
   const PosterDetails({super.key, required this.movie});
 
   @override
+  State<PosterDetails> createState() => _PosterDetailsState();
+}
+
+class _PosterDetailsState extends State<PosterDetails> {
+  bool isSelected = false;
+  @override
   Widget build(BuildContext context) {
+    final watchListPro = context.watch<WatchListProvider>();
+    isSelected = watchListPro.history.contains(widget.movie);
+
     return SizedBox(
       height: 400,
       width: double.infinity,
@@ -18,7 +31,7 @@ class PosterDetails extends StatelessWidget {
           SizedBox(
             height: 400,
             width: double.infinity,
-            child: PosterImage(movieModel: movie),
+            child: PosterImage(movieModel: widget.movie),
           ),
           Container(
             height: 400,
@@ -52,9 +65,26 @@ class PosterDetails extends StatelessWidget {
                   ),
                 ),
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    final watchListPro = context.read<WatchListProvider>();
+                    if (!isSelected) {
+                      watchListPro.addToHistory(widget.movie);
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          backgroundColor: AppColors.greenColor,
+                          content: Text(
+                            '${widget.movie.title} added to History',
+                          ),
+                        ),
+                      );
+                    }
+                    setState(() {
+                      isSelected = true;
+                    });
+                    Navigator.pushNamed(context, ProfileTab.routeName);
+                    },
                   icon: Icon(
-                    Icons.bookmark_border,
+                    isSelected ? Icons.bookmark : Icons.bookmark_border,
                     size: 40,
                     color: AppColors.whiteColor,
                   ),
@@ -109,7 +139,9 @@ class PosterDetails extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  movie.title.isNotEmpty ? movie.title : "No Title",
+                  widget.movie.title.isNotEmpty
+                      ? widget.movie.title
+                      : "No Title",
                   style: TextStyle(
                     color: AppColors.whiteColor,
                     fontSize: 20,
@@ -119,8 +151,8 @@ class PosterDetails extends StatelessWidget {
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  movie.releaseData.isNotEmpty
-                      ? movie.releaseData.split("-")[0]
+                  widget.movie.releaseData.isNotEmpty
+                      ? widget.movie.releaseData.split("-")[0]
                       : "Unknown",
                   style: TextStyle(
                     color: AppColors.grayColor,

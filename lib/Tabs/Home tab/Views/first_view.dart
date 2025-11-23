@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movies/tabs/Details%20Tab/details2.dart';
 import '../../../common/Theme/app_colors.dart';
 import '../../../common/Widget/movie_card_home.dart';
 import '../../../gen/assets.gen.dart';
@@ -82,13 +83,15 @@ class _FirstViewState extends State<FirstView> {
                     padding: EdgeInsets.only(top: topPadding, right: 16),
                     child: GestureDetector(
                       //TODO:Navigator
-                      // onTap: () {
-                      //   Navigator.of(context).push(
-                      //     MaterialPageRoute(
-                      //       builder: (_) => MovieDetailScreen(movie: widget.movies[index]),
-                      //     ),
+                      onTap: () {
+                        final movie = widget.movies[index];
+                      //   Navigator.pushNamed(
+                      //     context,
+                      //     MovieDetailsScreen.routeName,
+                      //     arguments: widget
+                      //         .movies[index],
                       //   );
-                      // },
+                       },
                       child: MovieCardHome(movie: widget.movies[index]),
                     ),
                   );
