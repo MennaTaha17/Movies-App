@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:movies/common/Theme/app_colors.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-
+///Shahd Ahmed
 class Movie {
   final String title;
   final String imagePath;
