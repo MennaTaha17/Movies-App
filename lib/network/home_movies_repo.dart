@@ -1,27 +1,42 @@
-import '../model/home_movie_model.dart';
-import 'home_movies_services.dart';
-
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+import '../model/movie_model.dart';
 
 class MoviesRepo {
-  final MoviesService service = MoviesService();
-
   Future<List<MovieModel>> getLatestMovies({int limit = 10}) async {
-    final response = await service.listMovies(
-      limit: limit,
-      sortBy: "date_added",
+    final response = await http.get(
+      Uri.parse(
+        'https://yts.lt/api/v2/list_movies.json?limit=$limit&sort_by=date_added',
+      ),
     );
-    final list = response.data["data"]["movies"] as List;
-    return list.map((e) => MovieModel.fromJson(e)).toList();
+
+    if (response.statusCode == 200) {
+      final data = json.decode(response.body);
+      final moviesJson = data['data']['movies'] as List?;
+      if (moviesJson == null) return [];
+      return moviesJson.map((json) => MovieModel.fromJson(json)).toList();
+    } else {
+      return [];
+    }
   }
 
   Future<List<MovieModel>> getMoviesByGenre({
     required String genre,
     int limit = 20,
   }) async {
-    final response = await service.listMovies(genre: genre, limit: limit);
-    final data = response.data["data"];
-    if (data == null || data["movies"] == null) return [];
-    final list = data["movies"] as List;
-    return list.map((e) => MovieModel.fromJson(e)).toList();
+    final response = await http.get(
+      Uri.parse(
+        'https://yts.lt/api/v2/list_movies.json?genre=$genre&limit=$limit',
+      ),
+    );
+
+    if (response.statusCode == 200) {
+      final data = json.decode(response.body);
+      final moviesJson = data['data']['movies'] as List?;
+      if (moviesJson == null) return [];
+      return moviesJson.map((json) => MovieModel.fromJson(json)).toList();
+    } else {
+      return [];
+    }
   }
 }

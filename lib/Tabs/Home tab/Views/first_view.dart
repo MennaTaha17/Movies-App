@@ -3,7 +3,8 @@ import 'package:movies/tabs/Details%20Tab/details2.dart';
 import '../../../common/Theme/app_colors.dart';
 import '../../../common/Widget/movie_card_home.dart';
 import '../../../gen/assets.gen.dart';
-import '../../../model/home_movie_model.dart';
+import '../../../model/movie_model.dart';
+// import '../../../model/home_movie_model.dart';
 
 class FirstView extends StatefulWidget {
   final List<MovieModel> movies;
@@ -41,19 +42,19 @@ class _FirstViewState extends State<FirstView> {
   @override
   Widget build(BuildContext context) {
     final currentMovie =
-        widget.movies.isNotEmpty ? widget.movies[currentPage] : null;
+    widget.movies.isNotEmpty ? widget.movies[currentPage] : null;
 
     return Container(
       width: double.infinity,
       height: 645,
       decoration: BoxDecoration(
         image:
-            currentMovie != null
-                ? DecorationImage(
-                  image: NetworkImage(currentMovie.image),
-                  fit: BoxFit.cover,
-                )
-                : null,
+        currentMovie != null
+            ? DecorationImage(
+          image: NetworkImage(currentMovie.poster),
+          fit: BoxFit.cover,
+        )
+            : null,
       ),
       child: Container(
         padding: EdgeInsets.only(top: 9),
@@ -81,19 +82,7 @@ class _FirstViewState extends State<FirstView> {
                   double topPadding = currentPage == index ? 0 : 20;
                   return Padding(
                     padding: EdgeInsets.only(top: topPadding, right: 16),
-                    child: GestureDetector(
-                      //TODO:Navigator
-                      onTap: () {
-                        final movie = widget.movies[index];
-                      //   Navigator.pushNamed(
-                      //     context,
-                      //     MovieDetailsScreen.routeName,
-                      //     arguments: widget
-                      //         .movies[index],
-                      //   );
-                       },
-                      child: MovieCardHome(movie: widget.movies[index]),
-                    ),
+                    child: MovieCardHome(movie: widget.movies[index]),
                   );
                 },
               ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:movies/common/Theme/app_colors.dart';
-
-import '../../model/home_movie_model.dart';
+import '../../model/movie_model.dart';
+import '../../screens/movie_details/movie_details.dart';
+import '../Theme/app_colors.dart';
 
 class MovieCardHome extends StatelessWidget {
   final MovieModel movie;
@@ -9,41 +9,52 @@ class MovieCardHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        ClipRRect(
-          borderRadius: BorderRadius.circular(20),
-          child: Image.network(
-            movie.image,
-            width: 200,
-            height: 300,
-            fit: BoxFit.cover,
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(
+          context,
+          MovieDetails.routeName,
+          arguments: movie.id,
+        );
+      },
+      child: Stack(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: Image.network(
+              movie.poster.isNotEmpty
+                  ? movie.poster
+                  : 'https://via.placeholder.com/150',
+              width: 200,
+              height: 300,
+              fit: BoxFit.cover,
+            ),
           ),
-        ),
-        Container(
-          margin: EdgeInsets.only(left: 9, top: 11),
-          decoration: BoxDecoration(
-            color: Colors.black.withValues(alpha: 0.5),
-            borderRadius: BorderRadius.circular(10),
-          ),
-          width: 58,
-          height: 28,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Text(
-                movie.rating.toString(),
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w400,
+          Container(
+            margin: EdgeInsets.only(left: 9, top: 11),
+            decoration: BoxDecoration(
+              color: Colors.black.withOpacity(0.5),
+              borderRadius: BorderRadius.circular(10),
+            ),
+            width: 58,
+            height: 28,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Text(
+                  movie.rating.toString(),
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w400,
+                  ),
                 ),
-              ),
-              Icon(Icons.star, color: AppColors.yellowColor),
-            ],
+                Icon(Icons.star, color: AppColors.yellowColor),
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

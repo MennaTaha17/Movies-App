@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:movies/common/Theme/app_colors.dart';
 import 'package:movies/common/Widget/custom_text_filed.dart';
 import 'package:movies/network/auth_services.dart';
+import 'package:movies/screens/main_layer.dart';
 import 'package:movies/screens/movie_details/movie_list_screen.dart';
 import 'package:movies/screens/update profile/update_profile.dart';
 import 'package:movies/tabs/profile_tab/profile_tab.dart';
@@ -97,7 +98,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           return;
                         }
 
-                        Navigator.pushReplacementNamed(context, MovieListScreen.routeName);
+                        Navigator.pushReplacementNamed(context, MainLayer.routeName);
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.yellowColor,

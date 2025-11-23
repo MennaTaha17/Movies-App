@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import '../model/home_movie_model.dart';
+import '../model/movie_model.dart';
 import '../network/home_movies_repo.dart';
 
 class HomeProvider extends ChangeNotifier {
-  final repo = MoviesRepo();
+  final MoviesRepo repo;
 
+  HomeProvider(this.repo);
   final List<String> genres = ["Action", "Adventure", "Animation", "Biography"];
-
   final Map<String, List<MovieModel>> genreMovies = {};
 
   List<MovieModel> latestMovies = [];
@@ -19,28 +19,15 @@ class HomeProvider extends ChangeNotifier {
     isLoading = true;
     notifyListeners();
 
-    latestMovies = await repo.getLatestMovies(limit: 10);
+    latestMovies = await repo.getLatestMovies();
 
     if (forceRefreshGenres || !genreMovies.containsKey(currentGenre)) {
       genreMovies[currentGenre] = await repo.getMoviesByGenre(
         genre: currentGenre,
-        limit: 20,
       );
     }
 
     isLoading = false;
-    notifyListeners();
-  }
-
-  Future<void> rotateGenre() async {
-    currentGenreIndex = (currentGenreIndex + 1) % genres.length;
-    notifyListeners();
-    if (!genreMovies.containsKey(currentGenre)) {
-      genreMovies[currentGenre] = await repo.getMoviesByGenre(
-        genre: currentGenre,
-        limit: 20,
-      );
-    }
     notifyListeners();
   }
 
@@ -50,7 +37,17 @@ class HomeProvider extends ChangeNotifier {
     if (!genreMovies.containsKey(currentGenre)) {
       genreMovies[currentGenre] = await repo.getMoviesByGenre(
         genre: currentGenre,
-        limit: 20,
+      );
+    }
+    notifyListeners();
+  }
+
+  Future<void> rotateGenre() async {
+    currentGenreIndex = (currentGenreIndex + 1) % genres.length;
+    notifyListeners();
+    if (!genreMovies.containsKey(currentGenre)) {
+      genreMovies[currentGenre] = await repo.getMoviesByGenre(
+        genre: currentGenre,
       );
     }
     notifyListeners();
