@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import '../../gen/assets.gen.dart';
 
 class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({super.key});
+  static const String routeName = '/onBoardingScreen';
 
   @override
   State<OnBoardingScreen> createState() => _OnBoardingScreenState();
@@ -11,49 +13,50 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   final PageController _controller = PageController();
   int _currentIndex = 0;
 
-  final List<Map<String, String>> onboardingData = [
+  final List<Map<String, dynamic>> onboardingData = [
     {
-      "image": "assets/images/png/movie1.png",
+      "image": Assets.asstes.images.png.redScreen,
       "title": "Find Your Next Favorite Movie Here",
       "desc":
       "Get access to a huge library of movies to suit all tastes. You will surely like it.",
       "button": "Explore Now",
     },
     {
-      "image": "assets/images/png/movie2.png",
+      "image": Assets.asstes.images.png.blueScreen,
       "title": "Discover Movies",
       "desc":
       "Explore a vast collection of movies in all qualities and genres. Find your next favorite film with ease.",
       "button": "Next",
     },
     {
-      "image": "assets/images/png/movie3.png",
+      "image": Assets.asstes.images.png.redScreen,
       "title": "Explore All Genres",
       "desc":
       "Discover movies from every genre, in all available qualities. Find something new and exciting to watch every day.",
       "button": "Next",
     },
     {
-      "image": "assets/images/png/movie4.png",
+      "image": Assets.asstes.images.png.purpleScreen,
       "title": "Create Watchlists",
       "desc":
       "Save movies to your watchlist to keep track of what you want to watch next. Enjoy films in various qualities and genres.",
       "button": "Next",
     },
     {
-      "image": "assets/images/png/movie5.png",
+      "image": Assets.asstes.images.png.darkScreen,
       "title": "Rate, Review, and Learn",
       "desc":
       "Share your thoughts on the movies you’ve watched. Dive deep into film details and help others discover great movies with your reviews.",
       "button": "Next",
     },
     {
-      "image": "assets/images/png/movie6.png",
+      "image": Assets.asstes.images.png.grayScreen,
       "title": "Start Watching Now",
       "desc": "Enjoy your next favorite film anytime, anywhere.",
       "button": "Finish",
     },
   ];
+
 
   @override
   Widget build(BuildContext context) {
@@ -74,8 +77,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           return Stack(
             children: [
               Positioned.fill(
-                child: Image.asset(
-                  item["image"]!,
+                child: item["image"].image(
                   fit: BoxFit.cover,
                 ),
               ),
@@ -100,7 +102,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 child: Column(
                   children: [
                     Text(
-                      item["title"]!,
+                      item["title"],
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Colors.white,
@@ -110,7 +112,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     ),
                     const SizedBox(height: 15),
                     Text(
-                      item["desc"]!,
+                      item["desc"],
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Colors.white70,
@@ -141,7 +143,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                           }
                         },
                         child: Text(
-                          item["button"]!,
+                          item["button"],
                           style: TextStyle(
                             fontSize: width * 0.04,
                             fontWeight: FontWeight.bold,
