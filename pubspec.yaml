@@ -1,34 +1,22 @@
-name: movies
-description: "A new Flutter project."
-publish_to: 'none'
-
-version: 1.0.0+1
+name: movies_app
+description: A new Flutter movie application.
 
 environment:
-  # يجب أن يكون إصدار SDK الحالي لـ Dart متوافقاً مع هذا النطاق
-  sdk: ">=3.0.0 <4.0.0"
+  sdk: ">=3.3.0 <4.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  # أيقونات iOS
-  cupertino_icons: ^1.0.8
-
-  # Firebase (تم تحديث الإصدارات إلى النسخ المستقرة الحديثة)
-  # يرجى استخدام الإصدارات المحدثة من موقع pub.dev لضمان التوافق
-  firebase_core: ^3.1.0  # يجب أن يتوافق مع أحدث إصدار مستقر
-  firebase_auth: ^5.1.0  # يجب أن يتوافق مع أحدث إصدار مستقر
-  cloud_firestore: ^5.1.0 # يجب أن يتوافق مع أحدث إصدار مستقر
+  firebase_core: ^3.6.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^5.0.0
 
 flutter:
   uses-material-design: true
 
-  # الموارد (Assets) - تأكد من وجود كل هذه الملفات في المسارات المحددة
+
   assets:
     - assets/images/png/movie1.png
     - assets/images/png/movie2.png
@@ -36,14 +24,6 @@ flutter:
     - assets/images/png/movie4.png
     - assets/images/png/movie5.png
     - assets/images/png/movie6.png
-    - assets/movies/1917-bg.jpg
-    - assets/movies/movie1.jpg
-    - assets/movies/movie2.jpg
-    - assets/movies/movie3.jpg
-    - assets/movies/movie4.jpg
 
-  # الخطوط (Fonts)
-  fonts:
-    - family: DancingScript
-      fonts:
-        - asset: assets/fonts/DancingScript-Regular.ttf
+
+

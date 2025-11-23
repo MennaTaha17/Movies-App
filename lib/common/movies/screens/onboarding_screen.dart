@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'home_screen.dart';
 
 class OnBoardingScreen extends StatefulWidget {
+  static const String routeName = '/onboarding';
+
   const OnBoardingScreen({super.key});
 
   @override
@@ -17,48 +20,47 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
       "title": "Find Your Next Favorite Movie Here",
       "desc":
       "Get access to a huge library of movies to suit all tastes. You will surely like it.",
-      "button": "Explore Now",
+      "button": "Explore Now"
     },
     {
       "image": "assets/images/png/movie2.png",
       "title": "Discover Movies",
       "desc":
       "Explore a vast collection of movies in all qualities and genres. Find your next favorite film with ease.",
-      "button": "Next",
+      "button": "Next"
     },
     {
       "image": "assets/images/png/movie3.png",
       "title": "Explore All Genres",
       "desc":
       "Discover movies from every genre, in all available qualities. Find something new and exciting to watch every day.",
-      "button": "Next",
+      "button": "Next"
     },
     {
       "image": "assets/images/png/movie4.png",
       "title": "Create Watchlists",
       "desc":
       "Save movies to your watchlist to keep track of what you want to watch next. Enjoy films in various qualities and genres.",
-      "button": "Next",
+      "button": "Next"
     },
     {
       "image": "assets/images/png/movie5.png",
       "title": "Rate, Review, and Learn",
       "desc":
       "Share your thoughts on the movies you’ve watched. Dive deep into film details and help others discover great movies with your reviews.",
-      "button": "Next",
+      "button": "Next"
     },
     {
       "image": "assets/images/png/movie6.png",
       "title": "Start Watching Now",
       "desc": "Enjoy your next favorite film anytime, anywhere.",
-      "button": "Finish",
+      "button": "Finish"
     },
   ];
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    final width = size.width;
+    final width = MediaQuery.of(context).size.width;
 
     return Scaffold(
       backgroundColor: Colors.black,
@@ -73,19 +75,22 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
 
           return Stack(
             children: [
+              // Background image
               Positioned.fill(
                 child: Image.asset(
                   item["image"]!,
                   fit: BoxFit.cover,
                 ),
               ),
+
+              // Gradient overlay
               Positioned.fill(
                 child: Container(
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       colors: [
-                        Colors.black.withValues(alpha: 0.6),
-                        Colors.black.withValues(alpha: 0.2),
+                        Colors.black.withOpacity(0.7),
+                        Colors.black.withOpacity(0.2),
                       ],
                       begin: Alignment.bottomCenter,
                       end: Alignment.topCenter,
@@ -93,6 +98,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   ),
                 ),
               ),
+
+              // Text + Button
               Positioned(
                 bottom: 80,
                 left: width * 0.06,
@@ -108,7 +115,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
+
                     const SizedBox(height: 15),
+
                     Text(
                       item["desc"]!,
                       textAlign: TextAlign.center,
@@ -118,7 +127,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                         height: 1.3,
                       ),
                     ),
+
                     const SizedBox(height: 25),
+
                     SizedBox(
                       width: width * 0.9,
                       height: 45,
@@ -131,13 +142,18 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                           ),
                         ),
                         onPressed: () {
-                          if (_currentIndex < onboardingData.length - 1) {
+                          if (_currentIndex <
+                              onboardingData.length - 1) {
                             _controller.nextPage(
-                              duration: const Duration(milliseconds: 400),
+                              duration:
+                              const Duration(milliseconds: 400),
                               curve: Curves.easeInOut,
                             );
                           } else {
-                            Navigator.pushReplacementNamed(context, '/home');
+                            Navigator.pushReplacementNamed(
+                              context,
+                              HomeScreen.routeName,
+                            );
                           }
                         },
                         child: Text(
@@ -148,35 +164,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                           ),
                         ),
                       ),
-                    ),
-                    if (_currentIndex > 0) ...[
-                      const SizedBox(height: 10),
-                      SizedBox(
-                        width: width * 0.9,
-                        height: 45,
-                        child: OutlinedButton(
-                          style: OutlinedButton.styleFrom(
-                            side: const BorderSide(color: Colors.amber),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                          ),
-                          onPressed: () {
-                            _controller.previousPage(
-                              duration: const Duration(milliseconds: 400),
-                              curve: Curves.easeInOut,
-                            );
-                          },
-                          child: Text(
-                            "Back",
-                            style: TextStyle(
-                              color: Colors.amber,
-                              fontSize: width * 0.04,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
+                    )
                   ],
                 ),
               ),

@@ -1,0 +1,6 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="true" type="FlutterRunConfigurationType" factoryName="Flutter" activateToolWindowBeforeRun="false">
+    <option name="filePath" value="$PROJECT_DIR$/.idea/runConfigurations" />
+    <method v="2" />
+  </configuration>
+</component>

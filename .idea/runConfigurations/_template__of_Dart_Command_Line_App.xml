@@ -1,0 +1,7 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application" singleton="false">
+    <option name="VMOptions" value="C:\flutter\flutter\Movies-App\.idea\runConfigurations" />
+    <option name="filePath" value="main.dart" />
+    <method v="2" />
+  </configuration>
+</component>
