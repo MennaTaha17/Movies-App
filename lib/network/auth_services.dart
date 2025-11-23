@@ -59,7 +59,7 @@ class AuthServices {
     await doc.set(user);
   }
 
-  static Future<UserModel?> _getUserInfo() async {
+  static Future<UserModel?> getUserInfo() async {
     String? uid = FirebaseAuth.instance.currentUser?.uid;
     if (uid == null) return null;
     CollectionReference<UserModel> userCollection = _getUserCollection();
@@ -88,4 +88,22 @@ class AuthServices {
       rethrow;
     }
   }
+
+  static Future<void> updateUserData({
+    required String name,
+    required String phone,
+  }) async {
+
+    String? uid = FirebaseAuth.instance.currentUser?.uid;
+    if(uid == null) return;
+
+    CollectionReference<UserModel> userCollection = _getUserCollection();
+    DocumentReference<UserModel> doc = userCollection.doc(uid);
+
+    await doc.update({
+      "name": name,
+      "phone": phone,
+    });
+  }
+
 }

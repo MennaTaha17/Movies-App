@@ -1,7 +1,7 @@
 #!/bin/sh
 # This is a generated file; do not edit or check into version control.
-export "FLUTTER_ROOT=P:\flutter_windows_3.29.3-stable\flutter"
-export "FLUTTER_APPLICATION_PATH=D:\flutter projects\movies"
+export "FLUTTER_ROOT=E:\environment flutter\flutter"
+export "FLUTTER_APPLICATION_PATH=E:\environment flutter\myLearn\Assignments\Movies-App"
 export "COCOAPODS_PARALLEL_CODE_SIGN=true"
 export "FLUTTER_TARGET=lib\main.dart"
 export "FLUTTER_BUILD_DIR=build"
