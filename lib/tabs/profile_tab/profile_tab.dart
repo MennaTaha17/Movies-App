@@ -1,12 +1,16 @@
+
 import 'package:flutter/material.dart';
-import 'package:movies/common/Theme/app_colors.dart';
-import 'package:movies/common/Widget/custom_main_button.dart';
-import 'package:movies/providers/settings_provider.dart';
-import 'package:movies/screens/update%20profile/update_profile.dart';
-import 'package:movies/tabs/profile_tab/header_profile.dart';
+import 'package:movies/common/Widget/buid_tab_button.dart';
+import 'package:movies/screens/auth/login_screen.dart';
 import 'package:provider/provider.dart';
 
+import '../../common/Theme/app_colors.dart';
+import '../../common/Widget/custom_main_button.dart';
 import '../../gen/assets.gen.dart';
+import '../../providers/settings_provider.dart';
+import '../../providers/watch_list_provider.dart';
+import '../../screens/update profile/update_profile.dart';
+import 'header_profile.dart';
 
 class ProfileTab extends StatefulWidget {
   static const String routeName = '/profile_tab';
@@ -17,49 +21,55 @@ class ProfileTab extends StatefulWidget {
 }
 
 class _ProfileTabState extends State<ProfileTab> {
+  bool showWatchList = true;
+
   @override
   Widget build(BuildContext context) {
+    final watchListPro = context.watch<WatchListProvider>();
     final avatarPro = context.watch<SettingsProvider>();
+
+    final currentList =
+    showWatchList ? watchListPro.watchList : watchListPro.history;
+
     return SafeArea(
       child: Scaffold(
         body: Column(
           children: [
-            Expanded(flex: 2, child: HeaderProfile()),
-            Expanded(
-              flex: 1,
+            SizedBox(
+              height: 180,
+                child: HeaderProfile()),
+            SizedBox(
+              height: 90,
               child: Container(
                 color: AppColors.grayColor,
+                padding: const EdgeInsets.symmetric(horizontal: 8),
                 child: Row(
-                  spacing: 10,
                   children: [
                     Expanded(
                       flex: 2,
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 16),
-                        child: CustomMainButton(
-                          text: 'Edit profile', // TODO localization
-                          color: AppColors.yellowColor,
-                          textColor: AppColors.blackColor,
-                          onPressed: () {
-                            Navigator.pushNamed(
-                              context,
-                              UpdateProfile.routeName,
-                            );
-                          },
-                        ),
+                      child: CustomMainButton(
+                        text: 'Edit profile',
+                        color: AppColors.yellowColor,
+                        textColor: AppColors.blackColor,
+                        onPressed: () {
+                          Navigator.pushNamed(
+                            context,
+                            UpdateProfile.routeName,
+                          );
+                        },
                       ),
                     ),
+                    SizedBox(width: 8),
                     Expanded(
                       flex: 1,
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 16),
-                        child: CustomMainButton(
-                          text: 'Exit', // TODO localization
-                          color: AppColors.redColor,
-                          textColor: AppColors.whiteColor,
-                          icon: Icons.exit_to_app,
-                          onPressed: () {},
-                        ),
+                      child: CustomMainButton(
+                        text: 'Exit',
+                        color: AppColors.redColor,
+                        textColor: AppColors.whiteColor,
+                        icon: Icons.exit_to_app,
+                        onPressed: () {
+                          Navigator.pushReplacementNamed(context, LoginScreen.routeName);
+                        },
                       ),
                     ),
                   ],
@@ -68,75 +78,66 @@ class _ProfileTabState extends State<ProfileTab> {
             ),
             Expanded(
               flex: 5,
-              child: Container(
+              child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    Expanded(
-                      flex: 1,
-                      child: Container(
-                        color: AppColors.grayColor,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Expanded(
-                              child: FilledButton(
-                                style: FilledButton.styleFrom(backgroundColor: AppColors.grayColor),
-                                onPressed: () {
-                                },
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Assets.asstes.images.svg.icWatchList.svg(),
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        'Watch List', // TODO localization
-                                        style: TextStyle(
-                                          color: AppColors.whiteColor,
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.w400,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              child: FilledButton(
-                                style: FilledButton.styleFrom(backgroundColor: AppColors.grayColor),
-                                onPressed: () {},
-                                child: Column(
-                                  children: [
-                                    Assets.asstes.images.svg.icHistory.svg(),
-                                    Text(
-                                      'History', // TODO localization
-                                      style: TextStyle(
-                                        color: AppColors.whiteColor,
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w400,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
+                    Container(
+                      color: AppColors.grayColor,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                        BuildTabButton(
+                              icon: Assets.asstes.images.svg.icWatchList.svg(),
+                              text: 'Watch List',
+                              color: showWatchList ? AppColors.yellowColor : AppColors.whiteColor,
+                              selected: showWatchList,
+                              onTap: () =>
+                                  setState(() => showWatchList = true)),
+                          BuildTabButton(
+                              icon: Assets.asstes.images.svg.icHistory.svg(),
+                              text: 'History',
+                              color: !showWatchList ? AppColors.yellowColor : AppColors.whiteColor,
+                              selected: !showWatchList,
+                              onTap: () =>
+                                  setState(() => showWatchList = false)),
+                        ],
                       ),
                     ),
-                    Expanded(
-                      flex: 4,
-                      child: Container(
-                        color: AppColors.blackColor,
-                        child: Center(
-                          child: Container(
-                            child: Assets.asstes.images.png.popcorn1.image(),
-                            height: 130,
-                            width: 130,
-                          ),
+                    Container(
+                      color: AppColors.blackColor,
+                      child: currentList.isEmpty
+                          ? Center(
+                        child: Assets.asstes.images.png.popcorn1.image(),
+                      )
+                          : GridView.builder(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        padding: const EdgeInsets.all(8),
+                        gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          crossAxisSpacing: 8,
+                          mainAxisSpacing: 8,
+                          childAspectRatio: 0.7,
                         ),
+                        itemCount: currentList.length,
+                        itemBuilder: (context, index) {
+                          final movie = currentList[index];
+                          return Column(
+                            children: [
+                              Expanded(
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(16),
+                                  child: Image.network(
+                                    movie.poster,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(height: 4),
+                            ],
+                          );
+                        },
                       ),
                     ),
                   ],

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movies/providers/watch_list_provider.dart';
 import 'package:movies/screens/main_layer.dart';
 import 'package:movies/screens/auth/forget_password_screen.dart';
 import 'package:movies/common/Theme/theme.dart';
@@ -8,7 +9,6 @@ import 'package:movies/screens/movie_details/movie_details.dart';
 import 'package:movies/screens/movie_details/movie_list_screen.dart';
 import 'package:movies/screens/update%20profile/update_profile.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'Tabs/Home tab/home_tab.dart';
 import 'package:movies/tabs/profile_tab/profile_tab.dart';
 import 'package:provider/provider.dart';
 import 'package:movies/providers/settings_provider.dart';
@@ -24,6 +24,7 @@ void main() async {
       providers: [
         ChangeNotifierProvider(create: (_) => SettingsProvider()),
         ChangeNotifierProvider(create: (_) => HomeProvider()),
+        ChangeNotifierProvider(create: (_) => WatchListProvider())
       ],
       child: const MyApp(),
     ),
@@ -37,17 +38,25 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: AppTheme.appTheme,
       title: 'Movies App',
-    routes: {
-        LoginScreen.routeName:(_) => LoginScreen(),
-      ForgetPasswordScreen.routeName:(_) => ForgetPasswordScreen(),
-      SignUpScreen.routeName:(_) => SignUpScreen(),
-      UpdateProfile.routeName:(_) => UpdateProfile(),
-      ProfileTab.routeName:(_) => ProfileTab(),
-      MainLayer.routeName:(_)=> MainLayer(),
-      MovieDetailsScreen.routeName:(_) => MovieDetailsScreen(),
-      MovieListScreen.routeName:(_)=> MovieListScreen(),
-    },
-      initialRoute: LoginScreen.routeName,
+      initialRoute: MovieListScreen.routeName,
+      routes: {
+        LoginScreen.routeName: (_) => LoginScreen(),
+        ForgetPasswordScreen.routeName: (_) => ForgetPasswordScreen(),
+        SignUpScreen.routeName: (_) => SignUpScreen(),
+        UpdateProfile.routeName: (_) => UpdateProfile(),
+        ProfileTab.routeName: (_) => ProfileTab(),
+        MainLayer.routeName: (_) => MainLayer(),
+        MovieListScreen.routeName: (_) => MovieListScreen(),
+      },
+      onGenerateRoute: (settings) {
+        if (settings.name == MovieDetails.routeName) {
+          final movieId = settings.arguments as int;
+          return MaterialPageRoute(
+            builder: (_) => MovieDetails(movieId: movieId),
+          );
+        }
+        return null;
+      },
     );
   }
 }

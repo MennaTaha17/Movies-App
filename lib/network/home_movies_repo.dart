@@ -1,5 +1,6 @@
 import '../model/home_movie_model.dart';
-import 'home_movies_service.dart';
+import 'home_movies_services.dart';
+
 
 class MoviesRepo {
   final MoviesService service = MoviesService();
