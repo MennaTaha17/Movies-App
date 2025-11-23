@@ -6,6 +6,7 @@ import 'package:movies/model/movie_model.dart';
 import 'package:movies/screens/movie_details/button_states.dart';
 import 'package:movies/screens/movie_details/poster_details.dart';
 import 'package:movies/screens/movie_details/poster_image.dart';
+import 'package:movies/screens/movie_details/secreenshots.dart';
 import '../../network/movie_services.dart';
 
 class MovieDetailsScreen extends StatefulWidget {
@@ -72,6 +73,7 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                       ],
                     ),
                   ),
+                  MovieScreenshots(movie: movie,)
                 ],
               ),
             );
