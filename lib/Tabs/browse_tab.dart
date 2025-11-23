@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 
 import '../model/movies_model.dart';
 import '../network/movies_services.dart';
-
+///shahd Yasser
+///shahd Yasser
+///shahd Yasser
+///shahd Yasser
+///shahd Yasser
 
 class BrowseScreen extends StatefulWidget {
   const BrowseScreen({super.key});
