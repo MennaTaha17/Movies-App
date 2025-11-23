@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movies/providers/watch_list_provider.dart';
+import 'package:movies/screens/Spalsh%20Onboradang/onboardang.dart';
+import 'package:movies/screens/Spalsh%20Onboradang/spalsh_screen.dart';
 import 'package:movies/screens/main_layer.dart';
 import 'package:movies/screens/auth/forget_password_screen.dart';
 import 'package:movies/common/Theme/theme.dart';
@@ -42,7 +44,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: AppTheme.appTheme,
       title: 'Movies App',
-      initialRoute: LoginScreen.routeName,
+      initialRoute: SplashScreen.routeName,
       routes: {
         LoginScreen.routeName: (_) => LoginScreen(),
         ForgetPasswordScreen.routeName: (_) => ForgetPasswordScreen(),
@@ -51,6 +53,8 @@ class MyApp extends StatelessWidget {
         ProfileTab.routeName: (_) => ProfileTab(),
         MainLayer.routeName: (_) => MainLayer(),
         MovieListScreen.routeName: (_) => MovieListScreen(),
+        SplashScreen.routeName: (_) => SplashScreen(),
+        OnBoardingScreen.routeName: (_) => OnBoardingScreen(),
       },
       onGenerateRoute: (settings) {
         if (settings.name == MovieDetails.routeName) {
