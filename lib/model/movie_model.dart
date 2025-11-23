@@ -10,6 +10,7 @@ class MovieModel {
   final String screenshot1;
   final String screenshot2;
   final String screenshot3;
+
   MovieModel({
     required this.title,
     required this.poster,
@@ -23,30 +24,36 @@ class MovieModel {
     this.id,
     this.trailerCode,
   });
-  Map<String, dynamic> toJson() {
-    return {
-      "title": title,
-      "poster": poster,
-      "releaseData": releaseData,
-      "rating": rating,
-      "likes": likes,
-      "views": views,
-    };
-  }
 
   factory MovieModel.fromJson(Map<String, dynamic> json) {
     return MovieModel(
       id: json["id"],
       title: json["title"] ?? "No Title",
       poster: json["medium_cover_image"] ?? "",
-      releaseData: json["year"] != null ? json["year"].toString() : "Unknown",
-      rating: json["rating"] != null ? (json["rating"] as num).toDouble() : 0.0,
-      likes: json["like_count"] != null ? json["like_count"] as int : 0,
-      views: json["download_count"] != null ? json["download_count"] as int : 0,
+      releaseData: json["year"]?.toString() ?? "Unknown",
+      rating: (json["rating"] ?? 0).toDouble(),
+      likes: json["like_count"] ?? 0,
+      views: json["download_count"] ?? 0,
       trailerCode: json["yt_trailer_code"] ?? '',
       screenshot1: json['medium_screenshot_image1'] ?? '',
       screenshot2: json['medium_screenshot_image2'] ?? '',
       screenshot3: json['medium_screenshot_image3'] ?? '',
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      "id": id,
+      "title": title,
+      "poster": poster,
+      "releaseData": releaseData,
+      "rating": rating,
+      "likes": likes,
+      "views": views,
+      "trailerCode": trailerCode,
+      "screenshot1": screenshot1,
+      "screenshot2": screenshot2,
+      "screenshot3": screenshot3,
+    };
   }
 }

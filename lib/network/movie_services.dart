@@ -5,6 +5,7 @@ import '../model/movie_model.dart';
 class MovieService {
   static const String _baseUrl = 'https://yts.lt/api/v2/list_movies.json';
   static const String _detailsUrl = 'https://yts.lt/api/v2/movie_details.json';
+
   Future<List<MovieModel>> fetchMovies() async {
     final response = await http.get(Uri.parse(_baseUrl));
     if (response.statusCode == 200) {
@@ -15,10 +16,9 @@ class MovieService {
       throw Exception('Failed to load movies');
     }
   }
+
   Future<MovieModel> fetchMovieDetails(int id) async {
-    final response = await http.get(
-      Uri.parse('$_detailsUrl?movie_id=$id&with_images=true'),
-    );
+    final response = await http.get(Uri.parse('$_detailsUrl?movie_id=$id&with_images=true'));
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
       final movieJson = data['data']['movie'];
